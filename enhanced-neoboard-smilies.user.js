@@ -5,6 +5,7 @@
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/create_topic*
 // @match        http://www.neopets.com/neoboards/topic*
+// @require      http://code.jquery.com/jquery-latest.js
 // @run-at       document-start
 // ==/UserScript==
 $(`<style type='text/css'>
