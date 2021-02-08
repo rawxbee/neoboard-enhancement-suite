@@ -3,6 +3,7 @@
 // @version      1.3.1
 // @description  Adds buttons to each post that allows you to respond to the specific user, mail the specific user, view the specific user's auctions/trades/shop and refresh the thread. The script will also auto-select your last used pen.
 // @author       rawbeee & sunbathr
+// @match        http://www.neopets.com/neoboards/create_topic*
 // @match        http://www.neopets.com/neoboards/topic*
 // @require      http://code.jquery.com/jquery-latest.js
 // @require      http://userscripts-mirror.org/scripts/source/107941.user.js
