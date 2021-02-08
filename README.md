@@ -1,2 +1,41 @@
-# neoboard-enhancement-suite
+# neoboard-enhancement-suite presented by sunbathr and rawbeee
 Suite of scripts intended to enhance the neoboard experience
+
+# enhanced-neoboard-actions.user.js
+*by rawbeee and sunbathr*
+
+Adds buttons to each post that allows you to respond to the specific user, mail the specific user, view the specific user's auctions/trades/shop and refresh the thread. The script will also remember the last pen you used and auto-select it for you.
+
+<img src="https://i.imgur.com/l8tZf34.png">
+
+# enhanced-neoboard-smilies.user.js
+*by sunathr and rawbeee*
+
+Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets or pets.neopets as images within replies, a search bar is available to find images.
+
+<img src="https://i.imgur.com/UOB65pz.png">
+
+<img src="https://i.imgur.com/m3IZTio.png">
+
+<img src="https://im5.ezgif.com/tmp/ezgif-5-5918a0062284.gif">
+
+<img src="https://i.imgur.com/Qxcsdjy.png">
+
+# neoboard-follow-users.js
+*by sunbathr and rawbeee*
+
+Underlines topics made by followed users, highlights their replies.
+
+<img src="https://i.imgur.com/CcEyyog.png">
+
+<img src="https://i.imgur.com/YfJZycn.png">
+
+# neoboard-bookmarks.user.js
+*by sunbathr and rawbeee*
+
+When on the neoboard index page you can choose to add or remove neoboards from your bookmarks. Additonally a bookmark button is added to threads, bookmarked threads are added to a collapsible menu above the neoboards.
+
+<img src="https://i.imgur.com/ytLiz0F.png">
+
+<img src="https://i.imgur.com/ydv6oPT.png">
+
