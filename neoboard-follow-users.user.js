@@ -3,7 +3,8 @@
 // @description  Underlines topics made by followed users, highlights their replies
 // @version      1.0
 // @author       sunbathr & rawbeee
-// @match        http://www.neopets.com/neoboards/*
+// @match        http://www.neopets.com/neoboards/boardlist*
+// @match        http://www.neopets.com/neoboards/topic*
 // @require      http://code.jquery.com/jquery-latest.js
 // @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
