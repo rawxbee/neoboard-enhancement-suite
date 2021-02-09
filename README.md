@@ -25,7 +25,7 @@ Adds the entire smilie library to the smilie section of the neoboards. Embeds im
 
 <img src="https://i.imgur.com/m3IZTio.png">
 
-<img src="https://im5.ezgif.com/tmp/ezgif-5-5918a0062284.gif">
+<img src="https://i.imgur.com/SItX4J4.gif">
 
 <img src="https://i.imgur.com/Qxcsdjy.png">
 
