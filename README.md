@@ -1,4 +1,7 @@
 # neoboard-enhancement-suite
+
+Use: Download <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">tampermonkey</a>. Open the script file of your choice and clikc the raw tab, install.
+
 # presented by sunbathr and rawbeee
 Suite of scripts intended to enhance the neoboard experience
 
