@@ -14,7 +14,7 @@ https://github.com/rawxbee/neopets-scripts
 
 Adds buttons to each post that allows you to respond to the specific user, mail the specific user, view the specific user's auctions/trades/shop and refresh the thread. The script will also remember the last pen you used and auto-select it for you.
 
-<img src="https://i.imgur.com/l8tZf34.png">
+<img src="https://i.imgur.com/l8tZf34.png" style="border: 1px solid #cacaca;">
 
 # enhanced-neoboard-smilies.user.js
 *by sunathr and rawbeee*
