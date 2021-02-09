@@ -1,5 +1,10 @@
-# neoboard-enhancement-suite presented by sunbathr and rawbeee
+# neoboard-enhancement-suite
+# presented by sunbathr and rawbeee
 Suite of scripts intended to enhance the neoboard experience
+
+https://github.com/moonbathr/neopets
+
+https://github.com/rawxbee/neopets-scripts
 
 # enhanced-neoboard-actions.user.js
 *by rawbeee and sunbathr*
