@@ -493,7 +493,7 @@ function smile() {
 <tr>
        <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.neopets.com/neomessages.phtml?type=send&recipient=`
     + appInsightsUserName + ` ‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/neomail-icon.svg" style="height: 20px;" alt="" border="0"></a></td>
-       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.http://www.neopets.com/island/tradingpost.phtml?type=browse&criteria=owner&search_string=`
+       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.neopets.com/island/tradingpost.phtml?type=browse&criteria=owner&search_string=`
     + appInsightsUserName + ` ‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/tradingpost-icon.png" style="height: 20px;" alt="" border="0"></a></td>
        <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.neopets.com/genie.phtml?type=find_user&auction_username=`
     + appInsightsUserName + ` ‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/auction-icon.png" style="height: 20px;" alt="" border="0"></a></td>
