@@ -59,6 +59,9 @@ transition-duration: 0.2s;
 .replyTo:hover {
 transform: translateY(-2px);
 }
+.boardPostMessage {
+margin-bottom: 40px;
+}
 </style>`).appendTo("head");
 
 function replyTo() {
