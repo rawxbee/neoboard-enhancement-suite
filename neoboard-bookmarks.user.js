@@ -95,8 +95,8 @@ align: middle;
   height: 25px;
   float: right;
   position: absolute;
-  margin-left: -30;
-  margin-top: 4;
+  margin-left: -30px;
+  margin-top: 4px;
 }
 .boardfollow {
   color: white;
@@ -129,7 +129,7 @@ align: middle;
   font-size: 10px;
 }
 tr button p {
-  margin-top: 6;
+  margin-top: 6px;
 }
 </style>`).appendTo("head");
 
