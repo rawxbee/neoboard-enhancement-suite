@@ -192,6 +192,7 @@ for (i = 0; i < coll.length; i++) {
 }
 
 function followBoardsToggle() {
+    $(`.boardIcon.premiumLockedIcon`).parent().remove();
     $("#boardIndex ul li .boardDesc").each(function(i, index) {
         var board = $(index).find("a h4").text();
         var link = $(index).html().match(/(?<=<a href=").*?(?="><h4>)/g)[0];
