@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Smilies
-// @version      1.3.0
+// @version      1.3.1
 // @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets or pets.neopets as images within replies, a search bar is available to find images.
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/create_topic*
@@ -479,6 +479,8 @@ function smile() {
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*cry*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/cry.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*clap*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/clap.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*violin*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/violin.gif" alt="" border="0"></a></td>
+      <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*violin*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/violin.gif" alt="" border="0"></a></td>
+      <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/plus-circle.svg" title="This is an empty character that can be used after links to avoid breaking fonts :)" style="height: 20px;" alt="" border="0"></a></td>
 </tr>
 </center>
 </table>
