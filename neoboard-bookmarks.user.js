@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.4.0
+// @version      1.4.1
 // @author       sunbathr & rawbeee
 // @description  Bookmarks for threads and boards
 // @match        http://www.neopets.com/neoboards/*
@@ -16,7 +16,6 @@ $(`<style type='text/css'>
   padding: 5px;
   font-family: "MuseoSansRounded500", 'Arial', sans-serif;
   valign : middle;
-align: middle;
   font-size: 11px;
   width: 50px;
 }
@@ -192,6 +191,7 @@ for (i = 0; i < coll.length; i++) {
 }
 
 function followBoardsToggle() {
+    $(`.boardIcon.premiumLockedIcon`).parent().prev().remove();
     $(`.boardIcon.premiumLockedIcon`).parent().remove();
     $("#boardIndex ul li .boardDesc").each(function(i, index) {
         var board = $(index).find("a h4").text();
