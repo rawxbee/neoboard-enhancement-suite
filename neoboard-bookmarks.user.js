@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.4.1
+// @version      1.4.2
 // @author       sunbathr & rawbeee
 // @description  Bookmarks for threads and boards
 // @match        http://www.neopets.com/neoboards/*
@@ -18,6 +18,7 @@ $(`<style type='text/css'>
   valign : middle;
   font-size: 11px;
   width: 50px;
+  height: 50px !important;
 }
 #bookmarked_boards td img {
   width: 50px;
