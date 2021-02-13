@@ -61,6 +61,14 @@ $(`<style type='text/css'>
 }
 .topicCreateIcons, .topicReplyIcons {
   margin-left: 40px !important;
+  width: 318.4px !important;
+}
+.topicReplySubmit {
+  margin-left: 31.4px;
+  margin-top: 5px !important;
+}
+.neoboardPenTitle, .topicReplyTitle {
+display: none;
 }
 </style>`).appendTo("head");
 
@@ -479,7 +487,6 @@ function smile() {
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*cry*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/cry.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*clap*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/clap.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*violin*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/violin.gif" alt="" border="0"></a></td>
-      <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*violin*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/violin.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/plus-circle.svg" title="This is an empty character that can be used after links to avoid breaking fonts :)" style="height: 20px;" alt="" border="0"></a></td>
 </tr>
 </center>
@@ -525,7 +532,7 @@ function addImages() {
 }
 
 function addSearch() {
-    var html = `<div id="slothsearch" style="margin-top: 30px; margin-left:-10px;">
+    var html = `<div id="slothsearch" style="margin-top: 30px !important; margin-left: -10px !important;">
 <form method="get" action="http://www.drsloth.com/process/" data-abide="" novalidate="novalidate" target="_blank">
           <div class="row">
             <div class="small-8 columns">
