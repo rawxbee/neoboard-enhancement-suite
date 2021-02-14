@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Actions
-// @version      1.3.1
+// @version      1.3.2
 // @description  Adds buttons to each post that allows you to respond to the specific user, mail the specific user, view the specific user's auctions/trades/shop and refresh the thread. The script will also auto-select your last used pen.
 // @author       rawbeee & sunbathr
 // @match        http://www.neopets.com/neoboards/topic*
@@ -84,8 +84,9 @@ function userActions() {
 <a href="/neomessages.phtml?type=send&recipient=${user}"<div class="actionbtn" style="cursor:pointer;"><img src="https://www.flaticon.com/svg/static/icons/svg/646/646094.svg" style="height:15px; width:15px;"></div></a>
 <a href="/island/tradingpost.phtml?type=browse&criteria=owner&search_string=${user}"<div class="actionbtn" style="cursor:pointer;"><img src="https://www.flaticon.com/svg/static/icons/svg/876/876784.svg" style="height:15px; width:15px;"></div></a>
 <a href="/genie.phtml?type=find_user&auction_username=${user}"<div class="actionbtn" style="cursor:pointer;"><img src="https://www.flaticon.com/svg/static/icons/svg/783/783196.svg" style="height:15px; width:15px;"></div></a>
-<a href="/browseshop.phtml?owner=${user}"<div class="actionbtn" style="cursor:pointer;"><img src="https://www.flaticon.com/svg/static/icons/svg/1170/1170678.svg" style="height:15px; width:15px;"></div></a></span>`);
-/* Mail, Auction, Shop icons by Freepik (https://www.flaticon.com/authors/freepik) */
+<a href="/browseshop.phtml?owner=${user}"<div class="actionbtn" style="cursor:pointer;"><img src="https://www.flaticon.com/svg/static/icons/svg/1170/1170678.svg" style="height:15px; width:15px;"></div></a>
+<a href="/gallery/index.phtml?gu=${user}"<div class="actionbtn" style="cursor:pointer;"><img src="https://www.flaticon.com/svg/static/icons/svg/1946/1946488.svg" style="height:15px; width:15px;"></div></a></span>`);
+/* Mail, Auction, Shop, Gallery icons by Freepik (https://www.flaticon.com/authors/freepik) */
 /* Exchange icon by Becris (https://www.flaticon.com/authors/becris)*/
     });
 }
