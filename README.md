@@ -2,7 +2,7 @@
 
 A suite of scripts intended to enhance the neoboard experience
 
-Use: Download <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">tampermonkey</a>. Open the script file of your choice and clikc the raw tab, install.
+Use: Download <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">tampermonkey</a>. Open the script file of your choice and click the 'Raw' tab, install.
 
 presented by sunbathr and rawbeee
 
@@ -14,7 +14,7 @@ Adds buttons to each post that allows you to respond to the specific user, mail 
 <img src="https://i.imgur.com/l8tZf34.png" style="border: 1px solid #cacaca;">
 
 # enhanced-neoboard-smilies.user.js
-*by sunathr and rawbeee*
+*by sunbathr and rawbeee*
 
 Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets or pets.neopets as images within replies, a search bar is available to find images.
 
