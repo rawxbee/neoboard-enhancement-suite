@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Actions
-// @version      1.3.2
+// @version      1.4.0
 // @description  Adds buttons to each post that allows you to respond to the specific user, mail the specific user, view the specific user's auctions/trades/shop and refresh the thread. The script will also auto-select your last used pen.
 // @author       rawbeee & sunbathr
 // @match        http://www.neopets.com/neoboards/topic*
@@ -62,6 +62,15 @@ transform: translateY(-2px);
 .boardPostMessage {
 margin-bottom: 40px;
 }
+div.neoboardPens {
+  width: 300px;
+  font-size: 8pt;
+  margin-top: -50px;
+  margin-left: 385px;
+}
+.neoboardPenTitle {
+  display: none
+}
 </style>`).appendTo("head");
 
 function replyTo() {
@@ -99,6 +108,7 @@ $(`.reportButton-neoboards`).before(`
 /* Icon by Vectors Market (https://www.flaticon.com/authors/vectors-market)*/
 
 var pen = GM_SuperValue.get ("LastPen", 0)
+var mode = GM_SuperValue.get ("Mode", 0)
 
 function remLastPen() {
     $('input[type=radio][name="select_pen"]').click(function () {
@@ -107,13 +117,46 @@ function remLastPen() {
     });
 }
 
+function addModes() {
+    $(".neoboardPens").append(`
+<p><div class="neoboardPen">
+   <img src="http://images.neopets.com/neoboards/smilies/map.gif" border="0">
+      <label class="neoboardPenLabel" for="select_!">Remember</label>
+         <input class="" type="radio" name="select_mode" value="0" title="When this mode is selected, clicking a pen will remember it for future page loads">
+</div>
+<p><div class="neoboardPen">
+   <img src="http://images.neopets.com/neoboards/smilies/indubitably.gif" border="0">
+      <label class="neoboardPenLabel" for="select_!">Random</label>
+         <input class="" type="radio" name="select_mode" value="1" title="When this mode is selected, a random pen is selected for future page laods">
+</div><p>`);
+
+    $('input[type=radio][name="select_mode"]').click(function () {
+        var clicked = $(this).attr("value")
+        GM_SuperValue.set ("Mode", clicked);
+    });
+}
+
 function postLastPen() {
-    var radBtn      = document.querySelector ('input[type=radio][name="select_pen"][value="' + pen + '"]');
-    radBtn.checked  = true;
-    };
+    if (mode != 1) {
+        var radBtn       = document.querySelector ('input[type=radio][name="select_pen"][value="' + pen + '"]');
+        radBtn.checked   = true;
+        var radBtn2      = document.querySelector ('input[type=radio][name="select_mode"][value="' + mode + '"]');
+        radBtn2.checked  = true;
+    }
+    else {
+        var max           = $( ".neoboardPen" ).length - 1;
+        var rand_pen      = Math.floor(Math.random() * Math.floor(max));
+        var rradBtn       = document.querySelector ('input[type=radio][name="select_pen"][value="' + rand_pen + '"]');
+        rradBtn.checked   = true;
+        var rradBtn2      = document.querySelector ('input[type=radio][name="select_mode"][value="' + mode + '"]');
+        rradBtn2.checked  = true;
+
+    }
+};
 
 document.addEventListener('DOMContentLoaded', replyTo);
 document.addEventListener('DOMContentLoaded', userActions);
 document.addEventListener('DOMContentLoaded', refreshThread);
-document.addEventListener('DOMContentLoaded', postLastPen);
 document.addEventListener('DOMContentLoaded', remLastPen);
+document.addEventListener('DOMContentLoaded', addModes);
+document.addEventListener('DOMContentLoaded', postLastPen);
