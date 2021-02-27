@@ -127,7 +127,7 @@ function addModes() {
 <p><div class="neoboardPen">
    <img src="http://images.neopets.com/neoboards/smilies/indubitably.gif" border="0">
       <label class="neoboardPenLabel" for="select_!">Random</label>
-         <input class="" type="radio" name="select_mode" value="1" title="When this mode is selected, a random pen is selected for future page laods">
+         <input class="" type="radio" name="select_mode" value="1" title="When this mode is selected, a random pen is selected for future page loads">
 </div><p>`);
 
     $('input[type=radio][name="select_mode"]').click(function () {
