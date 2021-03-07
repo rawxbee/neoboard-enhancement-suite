@@ -1,10 +1,20 @@
 # neoboard-enhancement-suite
 
+presented by sunbathr and rawbeee
+
 A suite of scripts intended to enhance the neoboard experience
 
 Use: Download <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">tampermonkey</a>. Open the script file of your choice and click the 'Raw' tab, install.
 
-presented by sunbathr and rawbeee
+Other recommendations:
+
+https://github.com/neopets-fixes/neopets_code
+
+https://github.com/moonbathr/neopets/tree/main
+
+https://github.com/Blathers/neopets-user-scripts/
+
+https://github.com/rawxbee/neopets-scripts
 
 # enhanced-neoboard-actions.user.js
 *by rawbeee and sunbathr*
