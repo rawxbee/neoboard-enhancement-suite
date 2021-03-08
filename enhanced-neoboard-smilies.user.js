@@ -6,6 +6,7 @@
 // @match        http://www.neopets.com/neoboards/create_topic*
 // @match        http://www.neopets.com/neoboards/topic*
 // @match        http://www.drsloth.com/view/*
+// @match        https://www.drsloth.com/view/*
 // @require      http://code.jquery.com/jquery-latest.js
 // @run-at       document-start
 // ==/UserScript==
