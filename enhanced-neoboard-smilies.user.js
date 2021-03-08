@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Smilies
-// @version      1.3.3
+// @version      1.3.4
 // @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies, a search bar is available to find images.
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/create_topic*
@@ -549,7 +549,7 @@ function addSearch() {
 
 function changeHTTP() {
     var img_link = document.querySelector("body > div.row > div.large-9.small-12.columns.content-wrapper > div.panel.img-info > div:nth-child(1) > div > p > input[type=text]").value.replace("https", "http");
-    $("body > div.row > div.large-9.small-12.columns.content-wrapper > div.panel.img-info > div:nth-child(1) > div > p > input[type=text]").replaceWith(`<input type="text" value="` + img_link + `">`);
+    $("body > div.row > div.large-9.small-12.columns.content-wrapper > div.panel.img-info > div:nth-child(1) > div > p > input[type=text]").replaceWith(`<input type="text" value="` + img_link + `‎">`);
 }
 
 document.addEventListener('DOMContentLoaded', smile);
