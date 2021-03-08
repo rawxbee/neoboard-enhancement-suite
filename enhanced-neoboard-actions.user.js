@@ -118,7 +118,7 @@ function remLastPen() {
 }
 
 function addModes() {
-    $(".neoboardPens").append(`
+    $(".neoboardPens").prepend(`
 <p><div class="neoboardPen">
    <img src="http://images.neopets.com/neoboards/smilies/map.gif" border="0">
       <label class="neoboardPenLabel" for="select_!">Remember</label>
