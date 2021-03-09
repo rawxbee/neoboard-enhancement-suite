@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neopets: Highlight Followed Users
 // @description  Underlines topics made by followed users, highlights their replies. Look for the settings gear in the buffer to edit colors.
-// @version      1.2.0
+// @version      1.2.1
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/boardlist*
 // @match        http://www.neopets.com/neoboards/topic*
@@ -113,12 +113,12 @@ function addSettings() {
 
 <table style="margin-left: auto; margin-right: auto;">
 <tr class="byline_update">
-<p><td><label for="FollowedBylineColor">Byline Color:</label></td>
+<p><td><label for="FollowedBylineColor">Followed Byline:</label></td>
 <td><input type="text" id="FollowedBylineColor" name="FollowedByline" value="` + FollowedBylineColors + `"></td>
 <td><button id="saveFollowedBylineColorButton">Save</button></td>
 </tr>
 <tr class="underline_update">
-<td><label for="FollowedUnderline">Underline Color:</label></td>
+<td><label for="FollowedUnderline">Followed Underline:</label></td>
 <td><input type="text" id="FollowedUnderlineColor" name="FollowedUnderlineColor" value="` + FollowedUnderlineColors + `"></td>
 <td><button id="saveFollowedUnderlineColorButton">Save</button></td>
 </tr>
