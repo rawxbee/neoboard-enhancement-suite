@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.4.2
+// @version      1.5.0
 // @author       sunbathr & rawbeee
-// @description  Bookmarks for threads and boards
+// @description  Bookmarks for threads and boards. Look for the settings gear in the buffer to edit colors.
 // @match        http://www.neopets.com/neoboards/*
 // @require      http://code.jquery.com/jquery-latest.js
 // @require      http://userscripts-mirror.org/scripts/source/107941.user.js
@@ -10,6 +10,10 @@
 // @grant        GM_getValue
 // @run-at       document-start
 // ==/UserScript==
+
+var BookmarkColors = GM_SuperValue.get("BookmarkedColorsNeopets", `#3B54B4`);
+var BookmarkTextColors = GM_SuperValue.get("BookmarkedTextColorsNeopets", `#3B54B4`);
+
 $(`<style type='text/css'>
 #bookmarked_boards td {
   border: 1px solid #efefef;
@@ -25,7 +29,7 @@ $(`<style type='text/css'>
 }
 #bookmarked_boards td a:link, #bookmarked_boards td a:visited {
   text-decoration: none;
-  color: #6e9992 !important;
+  color: ` + BookmarkTextColors + ` !important;
   font-weight: bold;
   font-size: 15px;
   line-height: 25px;
@@ -41,18 +45,18 @@ $(`<style type='text/css'>
 }
 #bookmarked_threads td a:link, #bookmarked_threads td a:visited {
   text-decoration: none;
-  color: #6e9992 !important;
+  color: ` + BookmarkTextColors + ` !important;
   font-size: 14px;
   line-height: 25px;
 }
 #neonav a:link, #neonav a:visited {
   text-decoration: none;
-  color: #6e9992 !important;
+  color: ` + BookmarkTextColors + ` !important;
   font-size: 14px;
   line-height: 25px;
 }
 .collapsible_bookmarks {
-  background-color: #79afa6;
+  background-color: ` + BookmarkColors + `;
   color: white;
   cursor: pointer;
   padding: 5px;
@@ -116,11 +120,8 @@ $(`<style type='text/css'>
   margin-top: 3px;
 }
 
-.active:hover, .collapsible_bookmarks:hover {
-  background-color: #6e9992;
-}
 .active {
-  background-color: #79afa6;
+  background-color: ` + BookmarkColors + `;
 }
 
 .content_collapsed {
@@ -130,6 +131,12 @@ $(`<style type='text/css'>
 }
 tr button p {
   margin-top: 6px;
+}
+.togglePopup__2020.settingspopup {
+  max-width:40%;
+  left: 30%;
+  top: 27%;
+z-index:100;
 }
 </style>`).appendTo("head");
 
@@ -203,7 +210,7 @@ function followBoardsToggle() {
             $(index).append( '<button type="button" class="boardfollow" style="background-color: #cacaca;"><p style="margin:3px;">REMOVE</p></button>' );
         }
         else {
-            $(index).append( '<button type="button" class="boardfollow" style="background-color: #79afa6;"><p style="margin:3px;">ADD</p></button>' );
+            $(index).append( `<button type="button" class="boardfollow" style="background-color: ` + BookmarkColors + `;"><p style="margin:3px;">ADD</p></button>` );
         }
     });
     $('.boardfollow').click(function() {
@@ -242,7 +249,7 @@ function followThreadsToggle() {
             $(title).after( '<button type="button" class="threadfollow" style="background-color: #cacaca;"><p>UNBOOKMARK</p></button>' );
         }
         else {
-            $(title).after( '<button type="button" class="threadfollow" style="background-color: #79afa6;"><p>BOOKMARK</p></button>' );
+            $(title).after( `<button type="button" class="threadfollow" style="background-color: ` + BookmarkColors + `;"><p>BOOKMARK</p></button>` );
         }
     });
     $('.threadfollow').click(function() {
@@ -297,9 +304,86 @@ function followThreadsToggleCollapsible() {
      });
 }
 
+function addSettings() {
+    var settings_pop = `<div class="togglePopup__2020 movePopup__2020 settingspopup" id="settings_pop" style="display:none;">
+		<div class="popup-header__2020">
+			<h3>Neoboard-enhancement-suite Settings</h3>
+
+
+<div class="popup-header-pattern__2020"></div>
+		</div>
+		<div class="popup-body__2020" style="background-color: #f0f0f0; border: solid 2px #f0f0f0;">
+<font style="font-size:10pt;">Enter your choice of color in hex format and save. Refresh to view changes.</font>
+<div id="nes_settings">
+
+</div>
+		</div>
+		<div class="popup-footer__2020 popup-grid3__2020">
+			<div class="popup-footer-pattern__2020"></div>
+		</div>
+	</div>`;
+
+    var settings = `
+<h4>Neoboard Bookmarks Colors:</h4>
+
+<table style="margin-left: auto; margin-right: auto;">
+<tr class="bookmark_update">
+<p><td><label for="BookmarksColor">Bookmark Buttons:</label></td>
+<td><input type="text" id="BookmarksColor" name="BookmarksColor" value="` + BookmarkColors + `"></td>
+<td><button id="saveBookmarksColorButton">Save</button></td>
+</tr>
+<tr class="bookmarktext_update">
+<td><label for="BookmarksTextColor">Bookmarks Text:</label></td>
+<td><input type="text" id="BookmarksTextColor" name="BookmarksTextColor" value="` + BookmarkTextColors + `"></td>
+<td><button id="saveBookmarksTextColorButton">Save</button></td>
+</tr>
+</table></p><p></p>`;
+
+    if ($("#settings_pop").length > 0) {
+        $("#nes_settings").append(settings);
+
+    var modal = document.getElementById("settings_pop");
+    var btn = document.getElementById("settings_btn");
+
+$('#settings_btn').click(function() {
+    if (modal.style.display !== "none"){
+		modal.style.display = "none";
+	} else {
+		modal.style.display = "block";
+	}
+});
+
+$('html').click(function(event) {
+    if ($(event.target).closest('#settings_btn, #settings_pop').length === 0) {
+        modal.style.display = "none";
+    }
+});
+    }
+    else {
+    $(`.navsub-left__2020`).append(`<span class="settings_btn" id="settings_btn" style="cursor:pointer;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/settings-icon.svg" style="height:30px; width:30px;"></span>`);
+    $(settings_pop).appendTo("body");
+    $("#nes_settings").append(settings);
+    }
+    document.getElementById ("saveBookmarksColorButton").addEventListener ("click", saveBookmarksColor);
+    document.getElementById ("saveBookmarksTextColorButton").addEventListener ("click", saveBookmarksTextColor);
+}
+function saveBookmarksColor() {
+    var clicked_bc = document.getElementById("BookmarksColor").value;
+    GM_SuperValue.set ("BookmarkedColorsNeopets", clicked_bc);
+   $(".bookmark_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_bc + `;">Updated.</font></td><td></td></tr>`);
+
+}
+function saveBookmarksTextColor() {
+    var clicked_btc = document.getElementById("BookmarksTextColor").value;
+    GM_SuperValue.set ("BookmarkedTextColorsNeopets", clicked_btc);
+    $(".bookmarktext_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_btc + `;">Updated.</font></td><td></td></tr>`);
+}
+
+
 
 document.addEventListener('DOMContentLoaded', displayBookmarks);
 document.addEventListener('DOMContentLoaded', displayBookmarkedThreads);
 document.addEventListener('DOMContentLoaded', followBoardsToggle);
 document.addEventListener('DOMContentLoaded', followThreadsToggle);
 document.addEventListener('DOMContentLoaded', followThreadsToggleCollapsible);
+document.addEventListener('DOMContentLoaded', addSettings);
