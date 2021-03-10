@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neopets: Highlight Followed Users
 // @description  Underlines topics made by followed users, highlights their replies. Look for the settings gear in the buffer to edit colors.
-// @version      1.2.1
+// @version      1.2.2
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/boardlist*
 // @match        http://www.neopets.com/neoboards/topic*
