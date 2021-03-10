@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.5.0
+// @version      1.5.1
 // @author       sunbathr & rawbeee
 // @description  Bookmarks for threads and boards. Look for the settings gear in the buffer to edit colors.
 // @match        http://www.neopets.com/neoboards/*
@@ -341,28 +341,28 @@ function addSettings() {
 
     if ($("#settings_pop").length > 0) {
         $("#nes_settings").append(settings);
-
-    var modal = document.getElementById("settings_pop");
-    var btn = document.getElementById("settings_btn");
-
-$('#settings_btn').click(function() {
-    if (modal.style.display !== "none"){
-		modal.style.display = "none";
-	} else {
-		modal.style.display = "block";
-	}
-});
-
-$('html').click(function(event) {
-    if ($(event.target).closest('#settings_btn, #settings_pop').length === 0) {
-        modal.style.display = "none";
-    }
-});
     }
     else {
-    $(`.navsub-left__2020`).append(`<span class="settings_btn" id="settings_btn" style="cursor:pointer;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/settings-icon.svg" style="height:30px; width:30px;"></span>`);
-    $(settings_pop).appendTo("body");
-    $("#nes_settings").append(settings);
+        $(`.navsub-left__2020`).append(`<span class="settings_btn" id="settings_btn" style="cursor:pointer;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/settings-icon.svg" style="height:30px; width:30px;"></span>`);
+        $(settings_pop).appendTo("body");
+        $("#nes_settings").append(settings);
+
+        var modal = document.getElementById("settings_pop");
+        var btn = document.getElementById("settings_btn");
+
+        $('#settings_btn').click(function() {
+            if (modal.style.display !== "none"){
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "block";
+            }
+        });
+
+        $('html').click(function(event) {
+            if ($(event.target).closest('#settings_btn, #settings_pop').length === 0) {
+                modal.style.display = "none";
+            }
+        });
     }
     document.getElementById ("saveBookmarksColorButton").addEventListener ("click", saveBookmarksColor);
     document.getElementById ("saveBookmarksTextColorButton").addEventListener ("click", saveBookmarksTextColor);
