@@ -125,27 +125,28 @@ function addSettings() {
 </table></p><p></p>`;
     if ($("#settings_pop").length > 0) {
         $("#nes_settings").append(settings);
-    var modal = document.getElementById("settings_pop");
-    var btn = document.getElementById("settings_btn");
-
-$('#settings_btn').click(function() {
-    if (modal.style.display !== "none"){
-		modal.style.display = "none";
-	} else {
-		modal.style.display = "block";
-	}
-});
-
-$('html').click(function(event) {
-    if ($(event.target).closest('#settings_btn, #settings_pop').length === 0) {
-        modal.style.display = "none";
-    }
-});
     }
     else {
     $(`.navsub-left__2020`).append(`<span class="settings_btn" id="settings_btn" style="cursor:pointer;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/settings-icon.svg" style="height:30px; width:30px;"></span>`);
     $(settings_pop).appendTo("body");
     $("#nes_settings").append(settings);
+
+        var modal = document.getElementById("settings_pop");
+        var btn = document.getElementById("settings_btn");
+
+        $('#settings_btn').click(function() {
+            if (modal.style.display !== "none"){
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "block";
+            }
+        });
+
+        $('html').click(function(event) {
+            if ($(event.target).closest('#settings_btn, #settings_pop').length === 0) {
+                modal.style.display = "none";
+            }
+        });
     }
     document.getElementById ("saveFollowedBylineColorButton").addEventListener ("click", saveFollowedBylineColor);
     document.getElementById ("saveFollowedUnderlineColorButton").addEventListener ("click", saveFollowedUnderlineColor);
