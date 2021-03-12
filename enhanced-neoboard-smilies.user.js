@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Smilies
-// @version      1.3.5
+// @version      1.3.6
 // @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies, a search bar is available to find images.
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/create_topic*
@@ -527,7 +527,7 @@ $(`.topicCreateSmilies-neoboards`).html(smilies);
 function addImages() {
     $("div.boardPostMessage").find("a").each(function(i, message) {
         var link  = $(message);
-        if (link.text().length > 0 && (link.text().indexOf('images.neopets') != -1 || link.text().indexOf('pets.neopets') != -1 || link.text().indexOf('upload.neopets') != -1)) {
+        if (link.text().length > 0 && (link.text().match(/\.png/g) != undefined || link.text().match(/\.gif/g) != undefined || link.text().match(/\.jpg/g) != undefined || link.text().match(/\.jpeg/g) != undefined) && (link.text().indexOf('images.neopets') != -1 || link.text().indexOf('pets.neopets') != -1 || link.text().indexOf('upload.neopets') != -1 || link.text().indexOf('nc.neopets') != -1)) {
             $(link).replaceWith('<img src="' + link.text() + '" style="max-width: 100%; padding: 5px;">');
         }
     });
