@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Actions
-// @version      1.4.0
+// @version      1.5.0
 // @description  Adds buttons to each post that allows you to respond to the specific user, mail the specific user, view the specific user's auctions/trades/shop and refresh the thread. The script will also auto-select your last used pen.
 // @author       rawbeee & sunbathr
 // @match        http://www.neopets.com/neoboards/topic*
@@ -154,9 +154,44 @@ function postLastPen() {
     }
 };
 
+String.prototype.replaceAll = function(str1, str2, ignore)
+{
+    return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+}
+
+function unique(list) {
+    var result = [];
+    $.each(list, function(i, e) {
+        if ($.inArray(e, result) == -1) result.push(e);
+    });
+    return result;
+}
+
+function addImpress() {
+    $(".boardPostMessage").each(function(i, message) {
+        var text = $(message).html();
+        var array = text.match(/impress\.openneo\.net\/.*?closet|http\:\/\/impress\.openneo\.net\/.*?closet|https\:\/\/impress\.openneo\.net\/.*?closet|impress\.openneo\.net\/\S*?outfits\/\d+|http\:\/\/impress\.openneo\.net\/\S*?outfits\/\d+|https\:\/\/impress\.openneo\.net\/\S*?outfits\/\d+/g);
+        if (!Array.isArray(array) || !array.length) {
+            return;
+        }
+        else {
+        unique(array).forEach(function(link) {
+            var newlink = link.replace('http://', '').replace('https://', '');
+            var embed = '<a href="https://' + newlink + '">' + link + '</a>';
+            text = text.replaceAll(link, embed);
+            });
+        }
+        if (text != -1) {
+            $(message).replaceWith('<div class="boardPostMessage">' + text + '</div>');
+        }
+
+    });
+}
+
 document.addEventListener('DOMContentLoaded', replyTo);
 document.addEventListener('DOMContentLoaded', userActions);
 document.addEventListener('DOMContentLoaded', refreshThread);
 document.addEventListener('DOMContentLoaded', remLastPen);
 document.addEventListener('DOMContentLoaded', addModes);
 document.addEventListener('DOMContentLoaded', postLastPen);
+document.addEventListener('DOMContentLoaded', addImpress);
