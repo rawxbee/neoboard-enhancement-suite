@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Actions
-// @version      1.5.0
+// @version      1.5.1
 // @description  Adds buttons to each post that allows you to respond to the specific user, mail the specific user, view the specific user's auctions/trades/shop and refresh the thread. The script will also auto-select your last used pen.
 // @author       rawbeee & sunbathr
 // @match        http://www.neopets.com/neoboards/topic*
@@ -177,7 +177,7 @@ function addImpress() {
         else {
         unique(array).forEach(function(link) {
             var newlink = link.replace('http://', '').replace('https://', '');
-            var embed = '<a href="https://' + newlink + '">' + link + '</a>';
+            var embed = '<a href="https://' + newlink + '" target="_blank">' + link + '</a>';
             text = text.replaceAll(link, embed);
             });
         }
