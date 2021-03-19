@@ -170,7 +170,7 @@ function unique(list) {
 function addImpress() {
     $(".boardPostMessage").each(function(i, message) {
         var text = $(message).html();
-        var array = text.match(/impress\.openneo\.net\/.*?closet|http\:\/\/impress\.openneo\.net\/.*?closet|https\:\/\/impress\.openneo\.net\/.*?closet|impress\.openneo\.net\/\S*?outfits\/\d+|http\:\/\/impress\.openneo\.net\/\S*?outfits\/\d+|https\:\/\/impress\.openneo\.net\/\S*?outfits\/\d+/g);
+        var array = text.match(/impress\.openneo\.net\/user.*?\/closet|http\:\/\/impress\.openneo\.net\/user.*?\/closet|https\:\/\/impress\.openneo\.net\/user.*?\/closet|impress\.openneo\.net\/\S*?outfits\/\d+|http\:\/\/impress\.openneo\.net\/\S*?outfits\/\d+|https\:\/\/impress\.openneo\.net\/\S*?outfits\/\d+/g);
         if (!Array.isArray(array) || !array.length) {
             return;
         }
