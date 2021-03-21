@@ -11,6 +11,7 @@
 // @run-at       document-start
 // ==/UserScript==
 
+
 var FollowedBylineColors = GM_SuperValue.get("FollowedBylineColorsNeopets", `#EDFCF8`);
 var FollowedUnderlineColors = GM_SuperValue.get("FollowedUnderlineColorsNeopets", `#3B54B4`);
 
@@ -53,11 +54,12 @@ var blockedUsers = GM_SuperValue.get("BlockedUsersNeopets", []);
 
 function highlightFollowedUsers() {
   $("#boardList li").each(function(i, board) {
-      if($.inArray($(board).find( ".author" ).text().replace(/[^a-zA-Z 0-9 _]+/g, ''), followedUsers) !== -1) {
+      var user = $(board).find( ".author" ).text().replace(/[^a-zA-Z 0-9 _]+/g, '');
+      if($.inArray(user, followedUsers) !== -1) {
           $(board).find( ".boardTopicTitle span" ).css("border-bottom", `3px solid` + FollowedUnderlineColors + ``);
       }
       /* blocked users */
-      if($.inArray($(board).find( ".author" ).text().replace(/[^a-zA-Z 0-9 _]+/g, ''), blockedUsers) !== -1) {
+      if ((user.length > 0) &&($.inArray(user, blockedUsers) !== -1)) {
           $(board).remove();
       }
   });
@@ -174,19 +176,19 @@ function addSettings() {
 function saveFollowedBylineColor() {
     var clicked_bc = document.getElementById("FollowedBylineColor").value;
     GM_SuperValue.set ("FollowedBylineColorsNeopets", clicked_bc);
-    $(".byline_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_bc + `;">Updated. Refresh to view changes.</font></td><td></td></tr>`);
+    $(".byline_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_bc + `;">Updated.<br>Refresh to view changes.</font></td><td></td></tr>`);
 }
 
 function saveFollowedUnderlineColor() {
     var clicked_uc = document.getElementById("FollowedUnderlineColor").value;
     GM_SuperValue.set ("FollowedUnderlineColorsNeopets", clicked_uc);
-    $(".underline_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_uc + `;">Updated. Refresh to view changes.</font></td><td></td></tr>`);
+    $(".underline_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_uc + `;">Updated.<br>Refresh to view changes.</font></td><td></td></tr>`);
 }
 
 function saveBlockedUsersList() {
     var clicked_bc = document.getElementById("blockedUsersList").value.split(",");
     GM_SuperValue.set ("BlockedUsersNeopets", clicked_bc);
-    $(".blocked_users_update").after(`<tr><td></td><td><font style="font-size: 10pt;">Updated. Refresh to view changes.</font></td><td></td></tr>`);
+    $(".blocked_users_update").after(`<tr><td></td><td><font style="font-size: 10pt;">Updated.<br>Refresh to view changes.</font></td><td></td></tr>`);
 }
 
 document.addEventListener('DOMContentLoaded', highlightFollowedUsers);
