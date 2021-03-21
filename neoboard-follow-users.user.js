@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Neopets: Highlight Followed Users
-// @description  Underlines topics made by followed users, highlights their replies. Look for the settings gear in the buffer to edit colors.
-// @version      1.2.2
+// @name         Neopets: Follow or Block Users
+// @description  Follow users (highlight posts, underline boards); block users (hide posts, boards). Customize using settings gear!
+// @version      1.3.0
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/*
 // @require      http://code.jquery.com/jquery-latest.js
