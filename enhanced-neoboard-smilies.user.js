@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Smilies
-// @version      1.3.6
+// @version      1.4.0
 // @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies, a search bar is available to find images.
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/create_topic*
@@ -71,6 +71,25 @@ $(`<style type='text/css'>
 }
 .neoboardPenTitle, .topicReplyTitle {
 display: none;
+}
+#settings_pop {
+  width: 760px;
+  left: 30%;
+  top: 27%;
+  z-index:100;
+}
+#settings_pop a:link {
+  color: #3b54b4 !important;
+  text-decoration: none !important;
+  font-size: 14px;
+}
+#settings_pop a:visited {
+  color: #3b54b4 !important;
+  text-decoration: none !important;
+  font-size: 14px;
+}
+#nes_settings {
+  max-height: 232px;
 }
 </style>`).appendTo("head");
 
@@ -561,6 +580,54 @@ function changeHTTP() {
     document.getElementById ("copy_url").addEventListener ("click", copy);
 }
 
+function addSettings() {
+        var settings_pop = `<div class="togglePopup__2020 movePopup__2020 settingspopup" id="settings_pop" style="display:none;">
+		<div class="popup-header__2020">
+			<h3 style="margin-bottom: 0px;">Neoboard-enhancement-suite Settings</h3>
+
+<div class="popup-header-pattern__2020"></div>
+		</div>
+		<div class="popup-body__2020 id="settings-body" style="background-color: #f0f0f0; border: solid 2px #f0f0f0;">
+<a href="http://www.neopets.com/neoboards/index.phtml">Index</a> | <a href="http://www.neopets.com/neoboards/preferences.phtml">Preferences</a> | <a href="https://github.com/rawxbee/neoboard-enhancement-suite">Suite</a>
+<div id="nes_settings">
+</div>
+		</div>
+		<div class="popup-footer__2020 popup-grid3__2020">
+			<div class="popup-footer-pattern__2020"></div>
+		</div>
+	</div>`;
+
+        var settings_none = `
+<div id="settings_none"><p></p>
+<font style="font-size:10pt;">There are no settings associated with the script(s) currently active on this page. </font>
+<p></p>`;
+    if ($("#settings_pop").length > 0) {
+    }
+    else {
+                $(`.navsub-left__2020`).append(`<span class="settings_btn" id="settings_btn" style="cursor:pointer;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/settings-icon.svg" style="height:30px; width:30px;"></span>`);
+        $(settings_pop).appendTo("body");
+        $("#nes_settings").append(settings_none);
+
+        var modal = document.getElementById("settings_pop");
+        var btn = document.getElementById("settings_btn");
+
+        $('#settings_btn').click(function() {
+            if (modal.style.display !== "none"){
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "block";
+            }
+        });
+
+        $('html').click(function(event) {
+            if ($(event.target).closest('#settings_btn, #settings_pop').length === 0) {
+                modal.style.display = "none";
+            }
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', addSettings);
 document.addEventListener('DOMContentLoaded', smile);
 document.addEventListener('DOMContentLoaded', addSearch);
 document.addEventListener('DOMContentLoaded', addImages);
