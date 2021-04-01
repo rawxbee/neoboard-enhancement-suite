@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.5.1
+// @version      1.5.2
 // @author       sunbathr & rawbeee
 // @description  Bookmarks for threads and boards. Look for the settings gear in the buffer to edit colors.
 // @match        http://www.neopets.com/neoboards/*
@@ -132,11 +132,24 @@ $(`<style type='text/css'>
 tr button p {
   margin-top: 6px;
 }
-.togglePopup__2020.settingspopup {
-  max-width:40%;
+#settings_pop {
+  width: 760px;
   left: 30%;
   top: 27%;
-z-index:100;
+  z-index:100;
+}
+#settings_pop a:link {
+  color: #3b54b4 !important;
+  text-decoration: none !important;
+  font-size: 14px;
+}
+#settings_pop a:visited {
+  color: #3b54b4 !important;
+  text-decoration: none !important;
+  font-size: 14px;
+}
+#nes_settings {
+  max-height: 232px;
 }
 </style>`).appendTo("head");
 
@@ -307,13 +320,12 @@ function followThreadsToggleCollapsible() {
 function addSettings() {
     var settings_pop = `<div class="togglePopup__2020 movePopup__2020 settingspopup" id="settings_pop" style="display:none;">
 		<div class="popup-header__2020">
-			<h3>Neoboard-enhancement-suite Settings</h3>
-
+			<h3 style="margin-bottom: 0px;>Neoboard-enhancement-suite Settings</h3>
 
 <div class="popup-header-pattern__2020"></div>
 		</div>
-		<div class="popup-body__2020" style="background-color: #f0f0f0; border: solid 2px #f0f0f0;">
-<font style="font-size:10pt;">Enter your choice of color in hex format and save. Refresh to view changes.</font>
+		<div class="popup-body__2020 id="settings-body" style="background-color: #f0f0f0; border: solid 2px #f0f0f0;">
+<a href="http://www.neopets.com/neoboards/index.phtml">Index</a> | <a href="http://www.neopets.com/neoboards/preferences.phtml">Preferences</a> | <a href="https://github.com/rawxbee/neoboard-enhancement-suite">Suite</a>
 <div id="nes_settings">
 
 </div>
@@ -324,8 +336,8 @@ function addSettings() {
 	</div>`;
 
     var settings = `
-<h4>Neoboard Bookmarks Colors:</h4>
-
+<h4 style="margin-bottom: 5px;">Neoboard Bookmarks Colors:</h4>
+<font style="font-size:10pt;">Enter your choice of color in hex format and save.</font>
 <table style="margin-left: auto; margin-right: auto;">
 <tr class="bookmark_update">
 <p><td><label for="BookmarksColor">Bookmark Buttons:</label></td>
@@ -341,6 +353,7 @@ function addSettings() {
 
     if ($("#settings_pop").length > 0) {
         $("#nes_settings").append(settings);
+        $("#settings_none").remove();
     }
     else {
         $(`.navsub-left__2020`).append(`<span class="settings_btn" id="settings_btn" style="cursor:pointer;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/settings-icon.svg" style="height:30px; width:30px;"></span>`);
