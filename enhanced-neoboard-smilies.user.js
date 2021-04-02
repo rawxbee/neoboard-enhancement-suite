@@ -3,8 +3,7 @@
 // @version      1.4.0
 // @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies, a search bar is available to find images.
 // @author       sunbathr & rawbeee
-// @match        http://www.neopets.com/neoboards/create_topic*
-// @match        http://www.neopets.com/neoboards/topic*
+// @match        http://www.neopets.com/neoboards/*
 // @match        http://www.drsloth.com/view/*
 // @match        https://www.drsloth.com/view/*
 // @require      http://code.jquery.com/jquery-latest.js
