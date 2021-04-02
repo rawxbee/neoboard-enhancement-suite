@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neopets: Follow or Block Users
 // @description  Follow users (highlight posts, underline boards); block users (hide posts, boards). Customize using settings gear!
-// @version      1.3.0
+// @version      1.3.1
 // @author       sunbathr & rawbeee
 // @match        http://www.neopets.com/neoboards/*
 // @require      http://code.jquery.com/jquery-latest.js
@@ -41,11 +41,24 @@ transform: translateY(-2px);
 .boardPostByline {
 transition: background-color 1s ease;
 }
-.togglePopup__2020.settingspopup {
-  max-width:40%;
+#settings_pop {
+  width: 760px;
   left: 30%;
   top: 27%;
-z-index:100;
+  z-index:100;
+}
+#settings_pop a:link {
+  color: #3b54b4 !important;
+  text-decoration: none !important;
+  font-size: 14px;
+}
+#settings_pop a:visited {
+  color: #3b54b4 !important;
+  text-decoration: none !important;
+  font-size: 14px;
+}
+#nes_settings {
+  max-height: 232px;
 }
 </style>`).appendTo("head");
 
@@ -107,8 +120,10 @@ function addSettings() {
 
 <div class="popup-header-pattern__2020"></div>
 		</div>
-		<div class="popup-body__2020" style="background-color: #f0f0f0; border: solid 2px #f0f0f0;">
-<div id="nes_settings"></div>
+		<div class="popup-body__2020 id="settings-body" style="background-color: #f0f0f0; border: solid 2px #f0f0f0;">
+<a href="http://www.neopets.com/neoboards/index.phtml">Index</a> | <a href="http://www.neopets.com/neoboards/preferences.phtml">Preferences</a> | <a href="https://github.com/rawxbee/neoboard-enhancement-suite">Suite</a>
+<div id="nes_settings">
+</div>
 		</div>
 		<div class="popup-footer__2020 popup-grid3__2020">
 			<div class="popup-footer-pattern__2020"></div>
@@ -144,6 +159,7 @@ function addSettings() {
     if ($("#settings_pop").length > 0) {
         $("#nes_settings").append(settings_follow);
         $("#nes_settings").append(settings_block);
+        $("#settings_none").remove();
     }
     else {
         $(`.navsub-left__2020`).append(`<span class="settings_btn" id="settings_btn" style="cursor:pointer;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/settings-icon.svg" style="height:30px; width:30px;"></span>`);
