@@ -226,7 +226,7 @@ function addSettings() {
 
         var settings_none = `
 <div id="settings_none"><p></p>
-<font style="font-size:10pt;">There are no settings associated with the script(s) currently active on this page. </font>
+<font style="font-size:10pt;">There are no settings associated with the script(s) currently active. </font>
 <p></p>`;
     if ($("#settings_pop").length > 0) {
     }
