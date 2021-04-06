@@ -16,7 +16,7 @@ A suite of scripts intended to enhance the neoboard experience on desktop
   * As long as you do not edit the script yourself, you should be notified when an update is available and be given the option to update. You may also choose to update/reinstall by repeating the steps above.
 
 # the settings cog
-* No matter what combination of scripts you install, while you are on the neoboards a settings cog will appear on the right side of the bar that includes your neopoints/etc. 
+* No matter what combination of scripts you install, while you are on the neoboards a settings cog will appear on the left side of the bar that includes your neopoints/etc. 
 
 * <img src="https://i.imgur.com/yIXEtmx.png">
 
