@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.5.2
+// @version      1.5.3
 // @author       sunbathr & rawbeee
 // @description  Bookmarks for threads and boards. Look for the settings gear in the buffer to edit colors.
 // @match        http://www.neopets.com/neoboards/*
@@ -257,7 +257,7 @@ function followBoardsToggle() {
 function followThreadsToggle() {
     $(".topicTitle").each(function(i, title) {
         var thread = $(`.topicNavTop`).html().match(/(?<=<\/a>\n\t\t\t\t).*?(?=\n\t\t\t<\/div>)/g)[0];
-        var thread_title = thread.replace("Topic: ", "").replace("<h1>", "").replace("</h1>", "").replace(/(?<=&amp;).*?(?=">)/);
+        var thread_title = thread.replace("Topic: ", "").replace("<h1>", "").replace("</h1>", "").replace(/&amp;next.*?(?=">)/, "");
         if($.inArray(thread_title, followedThreads) !== -1) {
             $(title).after( '<button type="button" class="threadfollow" style="background-color: #cacaca;"><p>UNBOOKMARK</p></button>' );
         }
@@ -267,7 +267,7 @@ function followThreadsToggle() {
     });
     $('.threadfollow').click(function() {
          var updating = $(`.topicNavTop`).html().match(/(?<=<\/a>\n\t\t\t\t).*?(?=\n\t\t\t<\/div>)/g)[0];
-         var updatingThread = updating.replace("Topic: ", "").replace("<h1>", "").replace("</h1>", "").replace(/(?<=&amp;).*?(?=">)/);
+         var updatingThread = updating.replace("Topic: ", "").replace("<h1>", "").replace("</h1>", "").replace(/&amp;next.*?(?=">)/, "");
          if($.inArray(updatingThread, followedThreads) !== -1) {
              var newFollowedThreads = followedThreads.filter(function(elem) {
                  return elem != updatingThread;
