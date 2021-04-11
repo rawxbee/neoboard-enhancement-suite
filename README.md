@@ -108,7 +108,5 @@ https://github.com/neopets-fixes/neopets_code
 
 https://github.com/Blathers/neopets-user-scripts/
 
-https://github.com/rawxbee/neopets-scripts
-
 *Compatiability with the neoboard-enhancement-suite is not guaranteed*
 
