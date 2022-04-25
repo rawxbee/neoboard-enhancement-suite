@@ -190,8 +190,8 @@ function unique(list) {
 function addImpress() {
     $(".boardPostMessage").each(function(i, message) {
         var text = $(message).html();
-        var array = text.match(/impress\.openneo\.net\/user\S*?\/closet|http\:\/\/impress\.openneo\.net\/user\S*?\/closet|https\:\/\/impress\.openneo\.net\/user\S*?\/closet|impress\.openneo\.net\/\S*?outfits\/\d+|http\:\/\/impress\.openneo\.net\/\S*?outfits\/\d+|https\:\/\/impress\.openneo\.net\/\S*?outfits\/\d+/g);
-        if (!Array.isArray(array) || !array.length) {
+        var array = text.match(/(http|https)?:\/\/(impress|impress\-2020)\.openneo\.net\/user\S*?\/(closet|lists)|(impress|impress\-2020)\.openneo\.net\/user\S*?\/(closet|lists)|(http|https)?:\/\/(impress|impress\-2020)\.openneo\.net\/outfits\/\d+|(impress|impress\-2020)\.openneo\.net\/outfits\/\d+/g);
+	if (!Array.isArray(array) || !array.length) {
             return;
         }
         else {
