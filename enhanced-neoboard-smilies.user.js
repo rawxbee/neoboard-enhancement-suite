@@ -543,11 +543,9 @@ $(`.topicCreateSmilies-neoboards`).html(smilies);
 }
 
 function addImages() {
-    $("div.boardPostMessage").find("a").each(function(i, message) {
-        var link  = $(message);
-        if (link.text().length > 0 && (link.text().match(/\.png/g) != undefined || link.text().match(/\.gif/g) != undefined || link.text().match(/\.jpg/g) != undefined || link.text().match(/\.jpeg/g) != undefined) && (link.text().indexOf('images.neopets') != -1 || link.text().indexOf('pets.neopets') != -1 || link.text().indexOf('upload.neopets') != -1 || link.text().indexOf('nc.neopets') != -1)) {
-            $(link).replaceWith('<img src="' + link.text() + '" style="max-width: 100%; padding: 5px;">');
-        }
+    $("div.boardPostMessage").each(function(i, node) {
+        var replaced = $(node).html().replace(/(?<!")(http?s?:?(\/\/[^"'<\s]*\.(?:png|jpg|jpeg|gif|png|svg)))/igm, '<img src="$1" style="max-width: 100%; padding: 5px;"/>')
+        $(node).html(replaced);
     });
 }
 
