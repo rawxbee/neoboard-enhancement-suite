@@ -7,7 +7,7 @@
 // @match        http://www.drsloth.com/view/*
 // @match        https://www.drsloth.com/view/*
 // @require      http://code.jquery.com/jquery-latest.js
-// @run-at       document-start
+// @run-at       document-end
 // ==/UserScript==
 $(`<style type='text/css'>
 .subnavc, .subnavp, .subnavp2p3, .subnavi, .subnavh, .subnavm, .subnavd, .subnavuser {
@@ -624,8 +624,8 @@ function addSettings() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', addSettings);
-document.addEventListener('DOMContentLoaded', smile);
-document.addEventListener('DOMContentLoaded', addSearch);
-document.addEventListener('DOMContentLoaded', addImages);
-document.addEventListener('DOMContentLoaded', changeHTTP);
+addSettings();
+smile();
+addSearch();
+addImages();
+changeHTTP();
