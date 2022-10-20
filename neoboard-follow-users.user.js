@@ -8,7 +8,7 @@
 // @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
 // @grant        GM_getValue
-// @run-at       document-start
+// @run-at       document-end
 // ==/UserScript==
 
 
@@ -207,6 +207,6 @@ function saveBlockedUsersList() {
     $(".blocked_users_update").after(`<tr><td></td><td><font style="font-size: 10pt;">Updated.<br>Refresh to view changes.</font></td><td></td></tr>`);
 }
 
-document.addEventListener('DOMContentLoaded', highlightFollowedUsers);
-document.addEventListener('DOMContentLoaded', followToggle);
-document.addEventListener('DOMContentLoaded', addSettings);
+highlightFollowedUsers();
+followToggle();
+addSettings();
