@@ -8,7 +8,7 @@
 // @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
 // @grant        GM_getValue
-// @run-at       document-start
+// @run-at       document-end
 // ==/UserScript==
 $(`<style type='text/css'>
 .reportButton-neoboards {
@@ -255,11 +255,11 @@ function addSettings() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', addSettings);
-document.addEventListener('DOMContentLoaded', replyTo);
-document.addEventListener('DOMContentLoaded', userActions);
-document.addEventListener('DOMContentLoaded', refreshThread);
-document.addEventListener('DOMContentLoaded', remLastPen);
-document.addEventListener('DOMContentLoaded', addModes);
-document.addEventListener('DOMContentLoaded', postLastPen);
-document.addEventListener('DOMContentLoaded', addImpress);
+addSettings();
+replyTo();
+userActions();
+refreshThread();
+remLastPen();
+addModes();
+postLastPen();
+addImpress();
