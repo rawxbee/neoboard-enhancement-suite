@@ -8,7 +8,7 @@
 // @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
 // @grant        GM_getValue
-// @run-at       document-start
+// @run-at       document-end
 // ==/UserScript==
 
 var BookmarkColors = GM_SuperValue.get("BookmarkedColorsNeopets", `#3B54B4`);
@@ -394,9 +394,9 @@ function saveBookmarksTextColor() {
 
 
 
-document.addEventListener('DOMContentLoaded', displayBookmarks);
-document.addEventListener('DOMContentLoaded', displayBookmarkedThreads);
-document.addEventListener('DOMContentLoaded', followBoardsToggle);
-document.addEventListener('DOMContentLoaded', followThreadsToggle);
-document.addEventListener('DOMContentLoaded', followThreadsToggleCollapsible);
-document.addEventListener('DOMContentLoaded', addSettings);
+displayBookmarks();
+displayBookmarkedThreads();
+followBoardsToggle();
+followThreadsToggle();
+followThreadsToggleCollapsible();
+addSettings();
