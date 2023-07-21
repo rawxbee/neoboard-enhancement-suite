@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Neopets: Follow or Block Users
 // @description  Follow users (highlight posts, underline boards); block users (hide posts, boards). Customize using settings gear!
-// @version      1.3.1
+// @version      1.3.2
 // @author       sunbathr & rawbeee
-// @match        *www.neopets.com/neoboards/*
+// @match        *://www.neopets.com/neoboards/*
+// @match        *://neopets.com/neoboards/*
 // @require      http://code.jquery.com/jquery-latest.js
 // @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
