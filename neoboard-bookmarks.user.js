@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.5.3
+// @version      1.5.4
 // @author       sunbathr & rawbeee
 // @description  Bookmarks for threads and boards. Look for the settings gear in the buffer to edit colors.
-// @match        *www.neopets.com/neoboards/*
+// @match        *://www.neopets.com/neoboards/*
+// @match        *://neopets.com/neoboards/*
 // @require      http://code.jquery.com/jquery-latest.js
 // @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
