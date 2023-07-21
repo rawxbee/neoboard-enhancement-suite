@@ -1,11 +1,14 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Smilies
-// @version      1.4.0
+// @version      1.4.1
 // @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies, a search bar is available to find images.
 // @author       sunbathr & rawbeee
-// @match        *www.neopets.com/neoboards/*
-// @match        http://www.drsloth.com/view/*
-// @match        https://www.drsloth.com/view/*
+// @match        *://www.neopets.com/neoboards/topic*
+// @match        *://neopets.com/neoboards/topic*
+// @match        *://www.neopets.com/neoboards/create_topic*
+// @match        *://neopets.com/neoboards/create_topic*
+// @match        *://www.drsloth.com/view/*
+// @match        *://drsloth.com/view/*
 // @require      http://code.jquery.com/jquery-latest.js
 // @run-at       document-end
 // ==/UserScript==
