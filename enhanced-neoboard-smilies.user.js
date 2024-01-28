@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Smilies
-// @version      1.4.1
+// @version      1.4.2
 // @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies, a search bar is available to find images.
 // @author       sunbathr & rawbeee
 // @match        *://www.neopets.com/neoboards/topic*
@@ -523,15 +523,15 @@ function smile() {
     <div class="subnav-user"><center>
 <table style="width:100%; text-align: center;">
 <tr>
-       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.neopets.com/neomessages.phtml?type=send&recipient=`
+       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://neopets.com/neomessages.phtml?type=send&recipient=`
     + appInsightsUserName + ` ‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/neomail-icon.svg" style="height: 20px;" alt="" border="0"></a></td>
-       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.neopets.com/island/tradingpost.phtml?type=browse&criteria=owner&search_string=`
+       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://neopets.com/island/tradingpost.phtml?type=browse&criteria=owner&search_string=`
     + appInsightsUserName + ` ‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/tradingpost-icon.png" style="height: 20px;" alt="" border="0"></a></td>
-       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.neopets.com/genie.phtml?type=find_user&auction_username=`
+       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://neopets.com/genie.phtml?type=find_user&auction_username=`
     + appInsightsUserName + ` ‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/auction-icon.png" style="height: 20px;" alt="" border="0"></a></td>
-       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.neopets.com/browseshop.phtml?owner=`
+       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://neopets.com/browseshop.phtml?owner=`
     + appInsightsUserName + ` ‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/myshop-icon.png" style="height: 20px;" alt="" border="0"></a></td>
-       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://www.neopets.com/gallery/index.phtml?gu=`
+       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;‎ http://neopets.com/gallery/index.phtml?gu=`
     + appInsightsUserName + ` ‎&quot;); return false;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/gallery-icon.svg" style="height: 20px;" alt="" border="0"></a></td>
 </tr>
 </center>
