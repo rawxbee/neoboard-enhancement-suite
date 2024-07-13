@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.5.4
+// @version      1.5.5
 // @author       sunbathr & rawbeee
 // @description  Bookmarks for threads and boards. Look for the settings gear in the buffer to edit colors.
 // @match        *://www.neopets.com/neoboards/*
@@ -134,10 +134,9 @@ tr button p {
   margin-top: 6px;
 }
 #settings_pop {
-  width: 760px;
-  left: 30%;
-  top: 27%;
-  z-index:100;
+transform: translate(-50%, -50%);
+margin-top: 0px !important;
+margin-left: 0px !important;
 }
 #settings_pop a:link {
   color: #3b54b4 !important;
