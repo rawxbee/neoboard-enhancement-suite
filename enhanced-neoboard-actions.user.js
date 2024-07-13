@@ -73,10 +73,9 @@ div.neoboardPens {
   display: none
 }
 #settings_pop {
-  width: 760px;
-  left: 30%;
-  top: 27%;
-  z-index:100;
+transform: translate(-50%, -50%);
+margin-top: 0px !important;
+margin-left: 0px !important;
 }
 #settings_pop a:link {
   color: #3b54b4 !important;
