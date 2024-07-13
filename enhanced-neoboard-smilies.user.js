@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Smilies
-// @version      1.4.2
+// @version      1.4.3
 // @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies, a search bar is available to find images.
 // @author       sunbathr & rawbeee
 // @match        *://www.neopets.com/neoboards/topic*
@@ -75,10 +75,9 @@ $(`<style type='text/css'>
 display: none;
 }
 #settings_pop {
-  width: 760px;
-  left: 30%;
-  top: 27%;
-  z-index:100;
+transform: translate(-50%, -50%);
+margin-top: 0px !important;
+margin-left: 0px !important;
 }
 #settings_pop a:link {
   color: #3b54b4 !important;
@@ -454,11 +453,12 @@ function smile() {
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*carrot*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/carrot.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*catfish*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/catfish.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*cloud*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/cloud.gif" alt="" border="0"></a></td>
+      <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*rainbow*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/rainbow.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*coffee*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/coffee.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*dung*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/dung.gif" alt="" border="0"></a></td>
-      <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*genie*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/genie.gif" alt="" border="0"></a></td>
 </tr>
 <tr>
+      <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*genie*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/genie.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*indubitably*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/indubitably.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*kqdoor*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/kqdoor.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*kqkey*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/kqkey.gif" alt="" border="0"></a></td>
@@ -466,9 +466,9 @@ function smile() {
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*moneybag*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/moneybag.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*monocle*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/monocle.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*moon*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/moon.gif" alt="" border="0"></a></td>
-      <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*raincloud*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/raincloud.gif" alt="" border="0"></a></td>
 </tr>
 <tr>
+      <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*raincloud*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/raincloud.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*star*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/star.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*sun*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/sun.gif" alt="" border="0"></a></td>
       <td><a href="#" class="smiley" onclick="insertSmiley(&quot;*tea*&quot;); return false;"><img src="http://images.neopets.com/neoboards/smilies/tea.gif" alt="" border="0"></a></td>
