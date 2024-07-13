@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neopets: Follow or Block Users
 // @description  Follow users (highlight posts, underline boards); block users (hide posts, boards). Customize using settings gear!
-// @version      1.3.2
+// @version      1.3.3
 // @author       sunbathr & rawbeee
 // @match        *://www.neopets.com/neoboards/*
 // @match        *://neopets.com/neoboards/*
@@ -43,10 +43,9 @@ transform: translateY(-2px);
 transition: background-color 1s ease;
 }
 #settings_pop {
-  width: 760px;
-  left: 30%;
-  top: 27%;
-  z-index:100;
+transform: translate(-50%, -50%);
+margin-top: 0px !important;
+margin-left: 0px !important;
 }
 #settings_pop a:link {
   color: #3b54b4 !important;
