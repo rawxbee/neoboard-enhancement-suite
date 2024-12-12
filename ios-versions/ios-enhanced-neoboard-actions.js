@@ -9,6 +9,7 @@
 // @grant        GM.getValue
 // @run-at       document-end
 // ==/UserScript==
+
 $(`<style type='text/css'>
 .reportButton-neoboards {
   border: 0px !important;
