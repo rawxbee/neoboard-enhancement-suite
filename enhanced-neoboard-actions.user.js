@@ -1,16 +1,33 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Actions
-// @version      1.7.1
+// @version      1.7.2
 // @description  Adds buttons to each post that allows you to respond to the specific user, mail the specific user, view the specific user's auctions/trades/shop and refresh the thread. The script will also auto-select your last used pen.
 // @author       rawbeee & sunbathr
 // @match        *://www.neopets.com/neoboards/topic*
 // @match        *://neopets.com/neoboards/topic*
 // @require      http://code.jquery.com/jquery-latest.js
-// @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @icon         https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png
 // @run-at       document-end
 // ==/UserScript==
+
+function setValue(key, value) {
+    GM_setValue(key, JSON.stringify(value));
+}
+
+function getValue(key, defaultValue) {
+    const value = GM_getValue(key);
+    if (value === undefined) {
+        return defaultValue;
+    }
+    try {
+        return JSON.parse(value);
+    } catch (e) {
+        return defaultValue;
+    }
+}
+
 $(`<style type='text/css'>
 .reportButton-neoboards {
   border: 0px !important;
@@ -127,13 +144,13 @@ $(`.reportButton-neoboards`).before(`
 /* https://icons8.com/icon/91644/replay - Replay icon by - https://icons8.com - Icons8 */
 
 
-var pen = GM_SuperValue.get ("LastPen", 0)
-var mode = GM_SuperValue.get ("Mode", 0)
+var pen = getValue("LastPen", 0);
+var mode = getValue("Mode", 0);
 
 function remLastPen() {
     $('input[type=radio][name="select_pen"]').click(function () {
-    var clicked = $(this).attr("value")
-    GM_SuperValue.set ("LastPen", clicked);
+    var clicked = $(this).attr("value");
+    setValue("LastPen", clicked);
     });
 }
 
@@ -151,8 +168,8 @@ function addModes() {
 </div><p>`);
 
     $('input[type=radio][name="select_mode"]').click(function () {
-        var clicked = $(this).attr("value")
-        GM_SuperValue.set ("Mode", clicked);
+        var clicked = $(this).attr("value");
+        setValue("Mode", clicked);
     });
 }
 
