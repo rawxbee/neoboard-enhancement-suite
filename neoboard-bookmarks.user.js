@@ -1,19 +1,35 @@
 // ==UserScript==
 // @name         Neopets: Neoboard Bookmarks
-// @version      1.5.5
+// @version      1.5.6
 // @author       sunbathr & rawbeee
 // @description  Bookmarks for threads and boards. Look for the settings gear in the buffer to edit colors.
 // @match        *://www.neopets.com/neoboards/*
 // @match        *://neopets.com/neoboards/*
 // @require      http://code.jquery.com/jquery-latest.js
-// @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @icon         https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png
 // @run-at       document-end
 // ==/UserScript==
 
-var BookmarkColors = GM_SuperValue.get("BookmarkedColorsNeopets", `#3B54B4`);
-var BookmarkTextColors = GM_SuperValue.get("BookmarkedTextColorsNeopets", `#3B54B4`);
+function setValue(key, value) {
+    GM_setValue(key, JSON.stringify(value));
+}
+
+function getValue(key, defaultValue) {
+    const value = GM_getValue(key);
+    if (value === undefined) {
+        return defaultValue;
+    }
+    try {
+        return JSON.parse(value);
+    } catch (e) {
+        return defaultValue;
+    }
+}
+
+var BookmarkColors = getValue("BookmarkedColorsNeopets", "#3B54B4");
+var BookmarkTextColors = getValue("BookmarkedTextColorsNeopets", "#3B54B4");
 
 $(`<style type='text/css'>
 #bookmarked_boards td {
@@ -153,8 +169,8 @@ margin-left: 0px !important;
 }
 </style>`).appendTo("head");
 
-var followedThreads = GM_SuperValue.get("BookmarkedThreadsNeopets", []);
-var followedBoards = GM_SuperValue.get("BookmarkedBoardsNeopets", []);
+var followedThreads = getValue("BookmarkedThreadsNeopets", []);
+var followedBoards = getValue("BookmarkedBoardsNeopets", []);
 
 function displayBookmarks() {
     var bookmarked_thread_html = ``;
@@ -240,7 +256,7 @@ function followBoardsToggle() {
          else {
              followedBoards.push(updatinghtml);
          }
-        GM_SuperValue.set ("BookmarkedBoardsNeopets", followedBoards);
+        setValue("BookmarkedBoardsNeopets", followedBoards);
         $(".boardfollow").remove();
         followBoardsToggle();
         $(".threadfollow").remove();
@@ -277,7 +293,7 @@ function followThreadsToggle() {
          else {
              followedThreads.push(updatingThread);
          }
-        GM_SuperValue.set ("BookmarkedThreadsNeopets", followedThreads);
+        setValue("BookmarkedThreadsNeopets", followedThreads);
         $(".threadfollow").remove();
         followThreadsToggle();
         $(".bookmarkedbt").remove();
@@ -304,7 +320,7 @@ function followThreadsToggleCollapsible() {
          else {
              followedThreads.push(updatingThread);
          }
-        GM_SuperValue.set ("BookmarkedThreadsNeopets", followedThreads);
+        setValue("BookmarkedThreadsNeopets", followedThreads);
         $(".threadfollow").remove();
         followThreadsToggle();
         $(".bookmarkedbt").remove();
@@ -382,17 +398,15 @@ function addSettings() {
 }
 function saveBookmarksColor() {
     var clicked_bc = document.getElementById("BookmarksColor").value;
-    GM_SuperValue.set ("BookmarkedColorsNeopets", clicked_bc);
+    setValue("BookmarkedColorsNeopets", clicked_bc);
    $(".bookmark_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_bc + `;">Updated.</font></td><td></td></tr>`);
 
 }
 function saveBookmarksTextColor() {
     var clicked_btc = document.getElementById("BookmarksTextColor").value;
-    GM_SuperValue.set ("BookmarkedTextColorsNeopets", clicked_btc);
+    setValue("BookmarkedTextColorsNeopets", clicked_btc);
     $(".bookmarktext_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_btc + `;">Updated.</font></td><td></td></tr>`);
 }
-
-
 
 displayBookmarks();
 displayBookmarkedThreads();
