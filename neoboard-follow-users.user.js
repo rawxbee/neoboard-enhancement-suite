@@ -1,20 +1,42 @@
 // ==UserScript==
 // @name         Neopets: Follow or Block Users
 // @description  Follow users (highlight posts, underline boards); block users (hide posts, boards). Customize using settings gear!
-// @version      1.3.3
+// @version      1.4.0
 // @author       sunbathr & rawbeee
 // @match        *://www.neopets.com/neoboards/*
 // @match        *://neopets.com/neoboards/*
 // @require      http://code.jquery.com/jquery-latest.js
-// @require      http://userscripts-mirror.org/scripts/source/107941.user.js
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @icon         https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png
 // @run-at       document-end
 // ==/UserScript==
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
+// !!!!!!!!!!!!!!!!!!!! BEFORE UPDATING !!!!!!!!!!!!!!!!!!!!! //
+// !!!!!!!!!!!!! SAVE YOUR BLOCK LIST SOMEWHERE !!!!!!!!!!!!! //
+// !!!!!!! THIS UPDATE CHANGES HOW STORAGE IS HANDLED !!!!!!! //
+// !!!!!!! YOU WILL NEED TO REBLOCK AND REFOLLOW USERS !!!!!! //
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
 
-var FollowedBylineColors = GM_SuperValue.get("FollowedBylineColorsNeopets", `#EDFCF8`);
-var FollowedUnderlineColors = GM_SuperValue.get("FollowedUnderlineColorsNeopets", `#3B54B4`);
+function setValue(key, value) {
+    GM_setValue(key, JSON.stringify(value));
+}
+
+function getValue(key, defaultValue) {
+    const value = GM_getValue(key);
+    if (value === undefined) {
+        return defaultValue;
+    }
+    try {
+        return JSON.parse(value);
+    } catch (e) {
+        return defaultValue;
+    }
+}
+
+var FollowedBylineColors = getValue("FollowedBylineColorsNeopets", "#EDFCF8");
+var FollowedUnderlineColors = getValue("FollowedUnderlineColorsNeopets", "#3B54B4");
 
 $(`<style type='text/css'>
 .postAuthorPetIcon img {
@@ -33,10 +55,10 @@ div.postPetInfo {
 div.postPet {
   margin: 0px 0px 10px 0px;
 }
-.follow {
+.follow, .block {
 transition-duration: 0.2s;
 }
-.follow:hover {
+.follow:hover, .block:hover {
 transform: translateY(-2px);
 }
 .boardPostByline {
@@ -58,12 +80,13 @@ margin-left: 0px !important;
   font-size: 14px;
 }
 #nes_settings {
-  max-height: 232px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 </style>`).appendTo("head");
 
-var followedUsers = GM_SuperValue.get("FollowedUsersNeopets", []);
-var blockedUsers = GM_SuperValue.get("BlockedUsersNeopets", []);
+var followedUsers = getValue("FollowedUsersNeopets", []);
+var blockedUsers = getValue("BlockedUsersNeopets", []);
 
 function highlightFollowedUsers() {
   $("#boardList li").each(function(i, board) {
@@ -81,37 +104,62 @@ function highlightFollowedUsers() {
 
 function followToggle() {
     $("#boardTopic li").each(function(i, post) {
-        var user = $(post).find( ".postAuthorName" ).text().replace(/[^a-zA-Z 0-9 _]+/g, '');
-        var byline = $(post).find( ".boardPostByline" )
-        if($.inArray(user, followedUsers) !== -1) {
-            $(byline).append( '<div class="follow" style="cursor: pointer; color: #999; font-size: 10px; position:absolute; bottom:0;"><p>UNFOLLOW</p></div>' );
-            $(byline).css("background-color", FollowedBylineColors);
-        }
-        else {
-            $(byline).append( '<div class="follow" style="cursor: pointer; color: #999; font-size: 10px; position:absolute; bottom:0;"><p>FOLLOW</p></div>' );
-            $(byline).css("background-color", "#f3f3f3");
+        var user = $(post).find(".postAuthorName").text().replace(/[^a-zA-Z0-9_]+/g, '');
+        var byline = $(post).find(".boardPostByline");
+
+        if (blockedUsers.includes(user)) {
+            $(post).remove();
+            return;
         }
 
-        if($.inArray(user, blockedUsers) !== -1) {
-          $(post).remove();
+        byline.find(".follow-block-wrapper").remove();
+
+        var wrapper = $(`
+            <div class="follow-block-wrapper" style="position:absolute; bottom:0; left:5px; display:flex; gap:6px;">
+                <div class="follow" style="cursor:pointer; font-size:10px; color:#999;"><p>${followedUsers.includes(user) ? "UNFOLLOW" : "FOLLOW"}</p></div>
+                <div style="font-size:16px; color:#999;"> | </div>
+                <div class="block" style="cursor:pointer; font-size:10px; color:#999;"><p>BLOCK</p></div>
+            </div>
+        `);
+
+        byline.append(wrapper);
+
+        if (followedUsers.includes(user)) {
+            byline.css("background-color", FollowedBylineColors);
+        } else {
+            byline.css("background-color", "#f3f3f3");
         }
+
+        var followBtn = wrapper.find(".follow");
+        var blockBtn = wrapper.find(".block");
+
+        followBtn.off().click(function () {
+            if (followedUsers.includes(user)) {
+                followedUsers = followedUsers.filter(u => u !== user);
+            } else {
+                followedUsers.push(user);
+            }
+            setValue("FollowedUsersNeopets", followedUsers);
+            followToggle();
+        });
+
+        blockBtn.off().click(function () {
+            if (confirm(`Are you sure you want to block '${user}'?`)) {
+                if (!blockedUsers.includes(user)) {
+                    blockedUsers.push(user);
+                    setValue("BlockedUsersNeopets", blockedUsers);
+                }
+                $("#boardTopic li").each(function(i, p) {
+                    var postUser = $(p).find(".postAuthorName").text().replace(/[^a-zA-Z0-9_]+/g, '');
+                    if (postUser === user) {
+                        $(p).remove();
+                    }
+                });
+            }
+        });
     });
-    $('.follow').click(function() {
-         var updatingUser = $(this).parent().find( ".postAuthorName" ).text();
-         if($.inArray(updatingUser, followedUsers) !== -1) {
-             var newFollowedUsers = followedUsers.filter(function(elem) {
-                 return elem != updatingUser;
-             });
-             followedUsers = newFollowedUsers;
-         }
-         else {
-             followedUsers.push(updatingUser);
-         }
-        GM_SuperValue.set ("FollowedUsersNeopets", followedUsers);
-        $(".follow").remove();
-        followToggle();
-     });
 }
+
 
 function addSettings() {
         var settings_pop = `<div class="togglePopup__2020 movePopup__2020 settingspopup" id="settings_pop" style="display:none;">
@@ -146,18 +194,30 @@ function addSettings() {
 </tr>
 </table></p><p></p>`;
 
+        var settings_followed_users = `
+<h4 style="margin-bottom: 5px;">Neoboard Followed Users:</h4>
+<font style="font-size:10pt;">Enter a comma-separated list of users to follow. Do not include spaces.</font>
+<table style="margin-left: auto; margin-right: auto;">
+<tr class="followed_users_update">
+<p><td><label for="followedUsersList">Followed users:</label></td>
+<td><input type="text" id="followedUsersList" name="FollowedUsers" value="` + followedUsers.join(",") + `"></td>
+<td><button id="saveFollowedUsersList">Save</button></td>
+</tr>
+</table></p><p></p>`;
+
         var settings_block = `
 <h4 style="margin-bottom: 5px;">Neoboard Blocked Users:</h4>
 <font style="font-size:10pt;">Enter a comma-separated list of users to block. Do not include spaces.</font>
 <table style="margin-left: auto; margin-right: auto;">
 <tr class="blocked_users_update">
 <p><td><label for="blockedUsersList">Blocked users:</label></td>
-<td><input type="text" id="blockedUsersList" name="FollowedByline" value="` + blockedUsers + `"></td>
+<td><input type="text" id="blockedUsersList" name="BlockedUsers" value="` + blockedUsers.join(",") + `"></td>
 <td><button id="saveBlockedUsersList">Save</button></td>
 </tr>
 </table></p><p></p>`;
     if ($("#settings_pop").length > 0) {
         $("#nes_settings").append(settings_follow);
+        $("#nes_settings").append(settings_followed_users);
         $("#nes_settings").append(settings_block);
         $("#settings_none").remove();
     }
@@ -165,6 +225,7 @@ function addSettings() {
         $(`.navsub-left__2020`).append(`<span class="settings_btn" id="settings_btn" style="cursor:pointer;"><img src="http://images.neopets.com/themes/h5/basic/images/v3/settings-icon.svg" style="height:30px; width:30px;"></span>`);
         $(settings_pop).appendTo("body");
         $("#nes_settings").append(settings_follow);
+        $("#nes_settings").append(settings_followed_users);
         $("#nes_settings").append(settings_block);
 
         var modal = document.getElementById("settings_pop");
@@ -186,24 +247,32 @@ function addSettings() {
     }
     document.getElementById ("saveFollowedBylineColorButton").addEventListener ("click", saveFollowedBylineColor);
     document.getElementById ("saveFollowedUnderlineColorButton").addEventListener ("click", saveFollowedUnderlineColor);
+    document.getElementById ("saveFollowedUsersList").addEventListener ("click", saveFollowedUsersList);
     document.getElementById ("saveBlockedUsersList").addEventListener ("click", saveBlockedUsersList);
 }
 
 function saveFollowedBylineColor() {
     var clicked_bc = document.getElementById("FollowedBylineColor").value;
-    GM_SuperValue.set ("FollowedBylineColorsNeopets", clicked_bc);
+    setValue("FollowedBylineColorsNeopets", clicked_bc);
     $(".byline_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_bc + `;">Updated.<br>Refresh to view changes.</font></td><td></td></tr>`);
 }
 
 function saveFollowedUnderlineColor() {
     var clicked_uc = document.getElementById("FollowedUnderlineColor").value;
-    GM_SuperValue.set ("FollowedUnderlineColorsNeopets", clicked_uc);
+    setValue("FollowedUnderlineColorsNeopets", clicked_uc);
     $(".underline_update").after(`<tr><td></td><td><font style="font-size: 10pt; color:` + clicked_uc + `;">Updated.<br>Refresh to view changes.</font></td><td></td></tr>`);
 }
 
+function saveFollowedUsersList() {
+    var clicked_fu = document.getElementById("followedUsersList").value.split(",").filter(x => x.trim() !== "");
+    setValue("FollowedUsersNeopets", clicked_fu);
+    followedUsers = clicked_fu;
+    $(".followed_users_update").after(`<tr><td></td><td><font style="font-size: 10pt;">Updated.<br>Refresh to view changes.</font></td><td></td></tr>`);
+}
+
 function saveBlockedUsersList() {
-    var clicked_bc = document.getElementById("blockedUsersList").value.split(",");
-    GM_SuperValue.set ("BlockedUsersNeopets", clicked_bc);
+    var clicked_bc = document.getElementById("blockedUsersList").value.split(",").filter(x => x.trim() !== "");
+    setValue("BlockedUsersNeopets", clicked_bc);
     $(".blocked_users_update").after(`<tr><td></td><td><font style="font-size: 10pt;">Updated.<br>Refresh to view changes.</font></td><td></td></tr>`);
 }
 
