@@ -1,14 +1,13 @@
 // ==UserScript==
 // @name         Neopets: Enhanced Neoboard Smilies
-// @version      1.4.3
-// @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies, a search bar is available to find images.
+// @version      1.4.4
+// @description  Adds the entire smilie library to the smilie section of the neoboards. Embeds image links from images.neopets, pets.neopets and upload.neopets as images within replies.
 // @author       sunbathr & rawbeee
 // @match        *://www.neopets.com/neoboards/topic*
 // @match        *://neopets.com/neoboards/topic*
 // @match        *://www.neopets.com/neoboards/create_topic*
 // @match        *://neopets.com/neoboards/create_topic*
-// @match        *://www.drsloth.com/view/*
-// @match        *://drsloth.com/view/*
+// @icon         https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png
 // @require      http://code.jquery.com/jquery-latest.js
 // @run-at       document-end
 // ==/UserScript==
@@ -552,32 +551,11 @@ function addImages() {
     });
 }
 
-function addSearch() {
-    var html = `<div id="slothsearch" style="margin-top: 30px !important; margin-left: -10px !important;">
-<form method="get" action="http://www.drsloth.com/process/" data-abide="" novalidate="novalidate" target="_blank">
-          <div class="row">
-            <div class="small-8 columns">
-              <input id="search-tagged" name="tagged" type="text" value="" style="border: 1px solid #cacaca; border-radius: 5px;" title="Try including 'animated' to find gifs">
-            </div>
-          <input type="submit" value="Search DrSloth" class="slothsearchbutton topicReplySubmit topicCreateSubmit" style="margin: 5px; width: 115px; font-size: 14px; height: 25px;">
-        </form>
-        </div>`;
-    $(`.replySmilies-neoboards`).append(html)
-    $(`.topicCreateSmilies-neoboards`).append(html)
-}
-
 function copy() {
   let copyText = document.getElementById("raw_url");
   copyText.select();
   copyText.setSelectionRange(0, 99999)
   document.execCommand("copy");
-}
-
-function changeHTTP() {
-    var img_link = document.querySelector("body > div.row > div.large-9.small-12.columns.content-wrapper > div.panel.img-info > div:nth-child(1) > div > p > input[type=text]").value.replace("https", "http");
-    $("body > div.row > div.large-9.small-12.columns.content-wrapper > div.panel.img-info > div:nth-child(1) > div > p > input[type=text]").replaceWith(`<button id="copy_url" class="button small" style="margin-bottom: 10px;">Copy URL for Neoboards</button>
-<input id="raw_url" type="text" value="` + img_link + ` ‎">`);
-    document.getElementById ("copy_url").addEventListener ("click", copy);
 }
 
 function addSettings() {
@@ -629,6 +607,4 @@ function addSettings() {
 
 addSettings();
 smile();
-addSearch();
 addImages();
-changeHTTP();
