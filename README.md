@@ -2,11 +2,11 @@
 
 A suite of scripts intended to enhance the neoboard experience on desktop
 
-- [Neoboards: Actions](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-actions)
-- [Neoboards: Bookmarks and History](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-bookmarks-and-history)
-- [Neoboards: Follow or Block](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-follow-or-block-users)
-- [Neoboards: Smilies](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-smilies)
-- [Neoboards: User Tags](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-user-tags)
+- [Neoboards: Actions](https://github.com/rawxbee/neoboard-enhancement-suite#-neoboards-actions)
+- [Neoboards: Bookmarks and History](https://github.com/rawxbee/neoboard-enhancement-suite#-neoboards-bookmarks-and-history)
+- [Neoboards: Follow or Block](https://github.com/rawxbee/neoboard-enhancement-suite#-neoboards-follow-or-block-users)
+- [Neoboards: Smilies](https://github.com/rawxbee/neoboard-enhancement-suite#-neoboards-smilies)
+- [Neoboards: User Tags](https://github.com/rawxbee/neoboard-enhancement-suite#-neoboards-user-tags)
 
 # Installation
 
@@ -96,6 +96,7 @@ Adds bookmarks and history tracking for threads and boards. Easily keep track of
 
 - **Bookmark a thread:** Click the "**BOOKMARK**" button at the top of a thread. Click again to "**UNBOOKMARK**".
 - **Bookmark a board:** Click the "**ADD**" button next to a board name. Click again to "**REMOVE**".
+- **Edit board order:** Click the "**Edit**" button next to the boards. Use the arrows to move bookmarked boards, or "**REMOVE**" to remove them. Click "**Save**" to lock in changes.
 - **View bookmarks/history:** Bookmarked boards, threads, and recent threads appear above the board list and topics.
 - **Remove bookmarks/history:** Use the "**X**" button next to a thread or the "**Clear Bookmarks**"/"**Clear History**" buttons.
 - **Configure Settings:** Access the settings menu to configure appearance and limitations.
