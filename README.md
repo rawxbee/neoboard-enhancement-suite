@@ -1,106 +1,225 @@
-# neoboard-enhancement-suite
-
-presented by sunbathr and rawbeee
+# Neoboard Enhancement Suite<br>by sunbathr and rawbeee
 
 A suite of scripts intended to enhance the neoboard experience on desktop
 
-# how to use
-* Install Tampermonkey ([Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)).
-* Navigate to the script(s) you would like to install.
-  * [enhanced-neoboard-actions.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/enhanced-neoboard-actions.user.js)
-  * [enhanced-neoboard-smilies.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/enhanced-neoboard-smilies.user.js)
-  * [neoboard-bookmarks.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboard-bookmarks.user.js)
-  * [neoboard-follow-users.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboard-follow-users.user.js)
-* On the script page locate the button labelled "Raw" and click it.
-* A new tab should open that will give you the choice to review the code and install.
-  * As long as you do not edit the script yourself, you should be notified when an update is available and be given the option to update. You may also choose to update/reinstall by repeating the steps above.
+- [Neoboards: Actions](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-actions)
+- [Neoboards: Bookmarks and History](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-bookmarks-and-history)
+- [Neoboards: Follow or Block](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-follow-or-block-users)
+- [Neoboards: Smilies](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-smilies)
+- [Neoboards: User Tags](https://github.com/rawxbee/neoboard-enhancement-suite/edit/main/README.md#-neoboards-user-tags)
 
-# the settings cog
-* No matter what combination of scripts you install, while you are on the neoboards a settings cog will appear on the left side of the bar that includes your neopoints/etc. 
+# Installation
 
-* ![](https://i.imgur.com/yIXEtmx.png)
+To use the Neoboard Enhancement Suite scripts:
 
-* This menu will give you quick access to the neoboard index, neoboard preferences and the neoboard-enhancement-suite.
+1. **Install a userscript manager such as:**  
+   - [Tampermonkey](https://www.tampermonkey.net/) (recommended for use with desktop browsers)
+   - [Userscripts](https://apps.apple.com/us/app/userscripts/id1463298887) (recommended for use with Safari on iOS)
+     - In the native Files app create a new folder for your scripts.
+       - Ensure the folder is "On My iPhone" rather than in "iCloud Drive", or you may need to intermittently redownload. 
+     - Set this as the default folder for your scripts.
+     - Go to device settings. Navigate to Safari > Extensions > then toggle Userscripts "on".
+    
+2. **Install the scripts:**  
+   - Navigate to the script(s) you would like to install.
+     - [neoboards-actions.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-actions.user.js)
+     - [neoboards-bookmarks-and-history.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-bookmarks-and-history.user.js)
+     - [neoboards-follow-or-block.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-follow-or-block.user.js)
+     - [neoboards-smilies.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-smilies.user.js)
+     - [neoboards-user-tags.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-user-tags.user.js)
+   - **Tampermonkey:**
+     - On the script page locate the button labelled "Raw" and click it.
+     - A new tab should open that will give you the choice to review the code and install.
+     - As long as you do not edit the script yourself, you should be notified when an update is available and be given the option to update.
+   - **Userscripts:**
+     - On the script page locate the "..." above the code display window to view the "Raw file content" menu.
+     - Tap "Download".
+     - Tap the download icon in your search bar and access your downloads through the menu that comes up.
+     - Tap the file you downloaded.
+     - Tap the file name at the top and choose "Save to Files".
+     - Save the file to the designated folder you made for Userscripts.
+     - Repeat to update or reinstall.
 
-* ![](https://i.imgur.com/zDgByKU.png)
+3. **Reload Neoboards:**  
+   - After installation, refresh any open Neoboards pages to activate the enhancements. Most scripts are only active on pages where they are used.
 
-* If an installed script has settings associated with it, those options will populate the menu.
+4. **Access settings:**  
+   - Click the settings cog in the Neoboards navigation bar to configure options for each script.
 
-# enhanced-neoboard-actions.user.js
-*by rawbeee and sunbathr*
+---
 
-* Adds quicklink buttons to user-specific pages to the byline for each user within threads.
+# <img src="https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png" height="20px"> Neoboards: Actions
 
-* Adds a reply button to the byline of each user, clicking this will instantly bring you to the reply text box and input the username of the user you are replying to (EG. '@rawbeee').
+[neoboards-actions.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-actions.user.js)
 
-* Adds a refresh button to each reply and restyles the report button.
+Adds quick-action buttons to each post on the Neoboards, letting you easily reply, send a neomail, view a user's trades/auctions/shop/gallery, or copy their username. Also includes thread refresh and neoboard pen modes.
 
-* ![](https://i.imgur.com/l8tZf34.png)
 
-* For those who use neoboard pens, you will have the choice to set a pen to be remembered (the next pen you click will be remembered and autoselected across the neoboards) or to set your pens to random (each page refresh will randomly select a pen).
+## Features
 
-* ![](https://i.imgur.com/QHGBm5k.png)
+- **Quick actions:** Instantly reply, neomail, view the trades/auctions/shop/gallery, or copy the username for any user.
+- **Thread refresh:** Refresh the current thread with a single click.
+- **Neoboard pen modes:** Remembers your last used neoboard pen or have one randomly selected each time. You can even choose to have preferences saved per board (Site Events, Avatar Chat, etc).
+- **Enhanced links:** Automatically converts OpenNeo Dress to Impress links into clickable links.
 
-* Links to DTI closets or outfits will be embedded as clickable links
+## Usage
 
-# enhanced-neoboard-smilies.user.js
-*by sunbathr and rawbeee*
+- **Reply to a user:** Click the "**REPLY**" button in a user's reply to mention them in your message.
+- **Quick action buttons:** Click the buttons within a user's reply to neomail them, see their trades/auctions/shop/gallery, or copy their username!
+- **Refresh thread:** Click the refresh icon near the report button to reload the thread.
+- **Select pen mode:** Choose "Remember" or "Random" mode for pen selection above the pen list.
+- **Per-board settings:** Access the settings menu to enable/disable.
 
-* Replaces the usual smilie section with several categories. Mouse over each category to browse the entire library of smilies available for posting on the neoboards. Click the smilie you want and it will be added to the text box.
+## Settings
 
-* An empty character is available within general smilie category (the plus icon), this character can be inserted after links or other elements that generally break fonts to avoid breaking them.
+- **Per-Board Pen Settings:** Choose whether or not you want preferences to be saved per-board (Site Events, Avatar Chat, etc)
 
-* ![](https://i.imgur.com/UOB65pz.png)
+###### Settings are accessed through the settings cog, which can be found on the left side of the sub-navigation menu (the one with your neopoints!).
 
-* The final category does not insert emojis, but rather user-specific links. You can use these to quicklink others to your neomail/trades/auctions/shop/gallery. Empty characters are on either side of the link so you can submit as is without breaking your font.
+---
 
-* ![](https://i.imgur.com/m3IZTio.png)
+# <img src="https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png" height="20px"> Neoboards: Bookmarks and History
 
-* Any **http** links from images.neopets or pets.neopets will be embedded directly into replies. A search bar is available below the smilie section that can be utilized to find images to post.
+[neoboards-bookmarks-and-history.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-bookmarks-and-history.user.js)
 
-* ![](https://i.imgur.com/SItX4J4.gif)
+Adds bookmarks and history tracking for threads and boards. Easily keep track of your favorite and recently visited threads, and customize the look of your bookmarks and history.
 
-* ![](https://i.imgur.com/Qxcsdjy.png)
+## Features
 
-# neoboard-follow-users.js
-*by sunbathr and rawbeee*
+- **Bookmark any thread or board** for quick access.
+- **Recent Threads:** Automatically tracks and displays your recently visited threads.
+- **Customizable:** Pick and choose colors and features.
+- **Collapsible Sections:** Expand/collapse your bookmarks and history lists.
+- **Bulk Actions:** Clear all bookmarks or history with one click.
 
-* Adds a follow option to the byline of each user within threads. This button becomes an unfollow button for users you are following.
+## Usage
 
-* Followed users will have a light green byline within threads to easily differentiate them from users you are not following (if you have followed/unfollowed a user in one tab and wish to make changes in another tab, make sure the second tab has been refreshed to ensure the previous changes aren't overwritten).
+- **Bookmark a thread:** Click the "**BOOKMARK**" button at the top of a thread. Click again to "**UNBOOKMARK**".
+- **Bookmark a board:** Click the "**ADD**" button next to a board name. Click again to "**REMOVE**".
+- **View bookmarks/history:** Bookmarked boards, threads, and recent threads appear above the board list and topics.
+- **Remove bookmarks/history:** Use the "**X**" button next to a thread or the "**Clear Bookmarks**"/"**Clear History**" buttons.
+- **Configure Settings:** Access the settings menu to configure appearance and limitations.
 
-* ![](https://i.imgur.com/YfJZycn.png)
+## Settings
 
-* In the list of threads on each neoboard, those created by followed users will appear underlined to easily differentiate them from those you are not following.
+- **Features:** Choose which features you want by enabling or disabling them.
+- **Bookmarked Board Button Colors**: Customize the button color, and choose whether the Edit button exists.
+- **Bookmarked Threads:** Customize the colors for bookmarked thread elements, and choose whether bookmarked threads have a left-side border..
+- **Recent Threads:** Customize the colors for recent thread elements, and choose whether recent threads have a left-side border. Also choose how many recent threads can be saved before old threads fall off the list.
 
-* ![](https://i.imgur.com/CcEyyog.png)
+###### Settings are accessed through the settings cog, which can be found on the left side of the sub-navigation menu (the one with your neopoints!).
 
-* You may choose to edit the color of the byline and underline through the settings cog
+---
 
-* ![](https://i.imgur.com/EWCKLcN.png)
+# <img src="https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png" height="20px"> Neoboards: Follow or Block Users
 
-* You can also block users by accesing the settings cog. Enter users in a comma seperated list (Ex: user1,user2,use3,user4). Their messages and threads will not appear for you.
+[neoboards-follow-or-block-users.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-follow-or-block.user.js)
 
-* ![](https://i.imgur.com/eaZpdQi.png)
+Lets you follow users (highlights threads and messages) or block users (hides threads and messages) on the Neoboards. Easily manage your lists and customize colors from the settings menu.
 
-# neoboard-bookmarks.user.js
-*by sunbathr and rawbeee*
+## Features
 
-* Creates a customizable bookmark section at the top of the neoboards.
+- **Follow users:** Highlights their threads and messages for easy spotting.
+- **Block users:** Hides their threads and messages.
+- **Bulk management:** Add, remove, or manage followed and blocked users in bulk.
+- **Customizable colors:** Choose highlight colors for followed users.
+- **Customizable display:** Choose whether followed user threads/messages are highlighted and whether blocked user threads/messages are hidden.
 
-* Within each thread is a bookmark button, clicking this will add it to the collapsible menu. This button becomes an unbookmark button when you have bookmarked a thread. You may also unbookmark by clicking the X beside the thread within the collapsible menu (if you have bookmarked/unbookmarked a thread in one tab and wish to make changes in another tab, make sure the second tab has been refreshed to ensure the previous changes aren't overwritten).
+## Usage
 
-* ![](https://i.imgur.com/ydv6oPT.png)
+- **Follow a user:** Click the "**FOLLOW**" button under a user's post to add them to your followed list.
+- **Unfollow a user:** Click the "**UNFOLLOW**" button under a followed user's post to remove them.
+- **Block a user:** Click the "**BLOCK**" button under a user's post to hide their threads and messages.
+- **Import/Export:** Access the settings menu and copy or paste a comma-separated list.
+- **Manage lists:** Access the settings menu and click "**Manage Followed List**" or "**Manage Blocked List**" to bulk add or remove users.
+- **Customize colors:** Change highlight and underline colors for followed users in the settings menu.
+- **Customize display:** Change display options for followed and blocked users in the settings menu. 
 
-* You may also bookmark/unbookmark specific neoboards (Avatar Chat, Pound Chat, etc) by visiting the neoboard index (where you see the entire list of neoboards) and using the add/remove buttons. These bookmarked boards will appear above the collapsible menu (the previous warning about making changes across tabs applies here as well).
+## Settings
 
-* ![](https://i.imgur.com/ytLiz0F.png)
+- **Display Settings:** Enable or disable highlights and hiding.
+- **Followed/Blocked User Colors:** Set the byline (highlight) and underline colors for followed/blocked users.
+- **Following:** An editable comma-separated list of users being followed.
+- **Manage Followed List:** Organized display of followed users with bulk options.
+- **Blocking** A comma-separated list of users being blocked.
+- **Manage Followed List:** Organized display of blocked users with bulk options.
 
-* You may choose to edit the color scheme through the settings cog
+###### Settings are accessed through the settings cog, which can be found on the left side of the sub-navigation menu (the one with your neopoints!).
 
-* ![](https://i.imgur.com/y07BHLN.png)
+---
 
-# other recommendations
+# <img src="https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png" height="20px"> Neoboards: Smilies
+
+[neoboards-smilies.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-smilies.user.js)
+
+Adds the entire Neoboards smilie library to the reply and topic creation forms, letting you easily insert any smilie with a click. Also embeds image links as images within messages.
+
+## Features
+
+- **Full smilie library:** Access all Neoboards smilies, organized by category, directly below the reply box.
+- **One-click insertion:** Click any smilie to insert its code at your cursor position.
+- **Image embedding:** Automatically displays direct image links as images within messages.
+
+## Usage
+
+- **Insert a smilie:** Click any smilie below the reply or topic form to add it to your message.
+- **Embed an image:** Paste a direct Neopets image URL in your post; it will display as an image (for you and others using the script).
+
+## Settings
+
+- **Features:** Choose which features you want by enabling or disabling them.
+
+###### Settings are accessed through the settings cog, which can be found on the left side of the sub-navigation menu (the one with your neopoints!).
+
+---
+
+# <img src="https://images.neopets.com/themes/h5/altadorcup/images/settings-icon.png" height="20px"> Neoboards: User Tags
+
+[neoboards-user-tags.user.js](https://github.com/rawxbee/neoboard-enhancement-suite/blob/main/neoboards-user-tags.user.js)
+
+Lets you tag users on the Neoboards with custom, styled labels and note. Easily manage, import, and export your user tags in bulk.
+
+## Features
+
+- **Tag any user** with a custom label and optional notes.
+- **Style tags**: Choose font, color, background, border, and more.
+- **Show tags** on both board lists and individual topics.
+- **Manage tags**: Edit, delete, or browse all your tags in a dedicated UI.
+- **Import/Export**: Backup your tags or transfer them between browsers/devices.
+- **Bulk actions**: Select multiple tags for export or deletion.
+
+## Usage
+
+- **Tag a user:** Click the "**+ TAG**" button next to a username on the boards or topics to create a tag.
+- **Edit/Delete a tag:** Click the user's tag to edit or delete it.
+- **Manage tags:** Access the settings menu and click "**Manage Existing Tags**" to browse, create, export, or delete tags.
+- **Import tags:** Access the settings menu and click "**Choose File**" to select a `.json` file, then click "**Import Tags**".<br>_Only import files from sources you trust._
+
+## Tag Field Examples
+
+| Field            | Example Input                 | Notes                                                                        |
+|------------------|-------------------------------|------------------------------------------------------------------------------|
+| **Tag**          | `Maya`<br>`<b>TCer</b>`       | Plain text or simple HTML (`b`, `i`, `u`, `span`, `img`, `marquee`, etc.)    |
+| **Font Face**    | `Arial`<br>`Comic Sans MS`    | Any installed font name                                                      |
+| **Font Size**    | `12px`<br>`1em`               | CSS font size values                                                         |
+| **Font Color**   | NA                            | Use the color picker                                                         |
+| **Border**       | `1px solid #aaa`              | CSS border property                                                          |
+| **Border Radius**| `4px`                         | CSS border-radius property                                                   |
+| **Background**   | `#f3f3f3`<br>`url('img.png')` | Color or image URL (CSS background value)                                    |
+| **Padding**      | `2px 4px`                     | CSS padding property                                                         |
+| **Notes**        | `Met on AC, nice!`            | Any plain text                                                               |
+
+## Settings
+
+- **Display Settings:** Toggle whether tags appear on board lists and/or topics.
+- **Default Tag Style:** Set the default appearance for new tags.
+- **User Tag Management:** Import/export tags and manage your tag list.
+
+###### Settings are accessed through the settings cog, which can be found on the left side of the sub-navigation menu (the one with your neopoints!).
+
+---
+
+# Other Recommendations
 
 https://github.com/moonbathr/neopets/tree/main
 
@@ -108,5 +227,9 @@ https://github.com/neopets-fixes/neopets_code
 
 https://github.com/Blathers/neopets-user-scripts/
 
+https://github.com/rawxbee/neopets-scripts
+
 *Compatiability with the neoboard-enhancement-suite is not guaranteed*
+
+
 
