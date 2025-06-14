@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neoboards: Follow or Block
 // @description  Follow (highlights messages and threads) and block users (hides messages and boards).
-// @version      2.0.0
+// @version      2.0.1
 // @author       sunbathr & rawbeee
 // @match        *://www.neopets.com/neoboards/*
 // @grant        GM_setValue
@@ -281,82 +281,100 @@
   }
 
   function updateAllUnderlineColors() {
-    document.querySelectorAll("#boardList li").forEach(function (board) {
-      const authorElem = board.querySelector(".author a");
-      if (!authorElem) return;
-      var user = normalizeUsername(authorElem.textContent);
-      if (
-        settings.followedUsers.includes(user) &&
-        settings.highlightFollowedBoards
-      ) {
-        board.style.backgroundColor = settings.followedUnderlineColors;
-      } else if (
-        settings.blockedUsers.includes(user) &&
-        settings.highlightBlockedBoards &&
-        !settings.hideBlockedBoards
-      ) {
-        board.style.backgroundColor = settings.blockedUnderlineColors;
-      } else {
-        board.style.backgroundColor = "";
-      }
-    });
-  }
+  const boardList = document.querySelectorAll("#boardList li");
+  let visibleIndex = 0;
+  
+  boardList.forEach(function (board) {
+    const authorElem = board.querySelector(".author a");
+    if (!authorElem) return;
+    var user = normalizeUsername(authorElem.textContent);
+    
+    // Skip hidden boards from alternating pattern
+    if (board.style.display === "none") return;
 
-  function fixBoardListAlternatingPattern() {
-    const boardList = document.querySelectorAll("#boardList li");
-    let visibleIndex = 0;
-    boardList.forEach((li) => {
-      if (li.style.display === "none") return;
-      const authorElem = li.querySelector(".author a");
-      var user = authorElem ? normalizeUsername(authorElem.textContent) : "";
-      if (
-        settings.followedUsers.includes(user) &&
-        settings.highlightFollowedBoards
-      ) {
-        li.style.backgroundColor = settings.followedUnderlineColors;
-      } else if (
-        settings.blockedUsers.includes(user) &&
-        settings.highlightBlockedBoards &&
-        !settings.hideBlockedBoards
-      ) {
-        li.style.backgroundColor = settings.blockedUnderlineColors;
-      } else {
-        li.style.backgroundColor = visibleIndex % 2 === 0 ? "#fff" : "#f3f3f3";
+    // Apply colors in priority order
+    if (
+      settings.followedUsers.includes(user) &&
+      settings.highlightFollowedBoards
+    ) {
+      board.style.backgroundColor = settings.followedUnderlineColors;
+    } else if (
+      settings.blockedUsers.includes(user) &&
+      settings.highlightBlockedBoards &&
+      !settings.hideBlockedBoards
+    ) {
+      board.style.backgroundColor = settings.blockedUnderlineColors;
+    } else {
+      // Check for native colors before applying alternating pattern
+      const computedStyle = window.getComputedStyle(board);
+      const currentBgColor = computedStyle.backgroundColor;
+      
+      const isNativeColor = 
+        currentBgColor === "rgb(211, 239, 255)" || 
+        currentBgColor === "rgb(207, 255, 208)" ||
+        currentBgColor === "rgba(211, 239, 255, 1)" ||
+        currentBgColor === "rgba(207, 255, 208, 1)";
+      
+      if (!isNativeColor) {
+        board.style.backgroundColor = visibleIndex % 2 === 0 ? "#fff" : "#f3f3f3";
       }
-      visibleIndex++;
-    });
-  }
+    }
+    
+    visibleIndex++;
+  });
+}
+
 
   function highlightFollowedUsers() {
-    const boardList = document.querySelectorAll("#boardList li");
-    boardList.forEach(function (board) {
-      const authorElem = board.querySelector(".author a");
-      if (!authorElem) return;
-      var user = normalizeUsername(authorElem.textContent);
+  const boardList = document.querySelectorAll("#boardList li");
+  let visibleIndex = 0;
+  
+  boardList.forEach(function (board) {
+    const authorElem = board.querySelector(".author a");
+    if (!authorElem) return;
+    var user = normalizeUsername(authorElem.textContent);
 
-      if (
-        settings.followedUsers.includes(user) &&
-        settings.highlightFollowedBoards
-      ) {
-        board.style.backgroundColor = settings.followedUnderlineColors;
-      } else if (
-        settings.blockedUsers.includes(user) &&
-        settings.highlightBlockedBoards &&
-        !settings.hideBlockedBoards
-      ) {
-        board.style.backgroundColor = settings.blockedUnderlineColors;
-      } else {
-        board.style.backgroundColor = "";
-      }
+    // Handle blocking/hiding first
+    if (user.length > 0 && settings.blockedUsers.includes(user)) {
+      board.style.display = settings.hideBlockedBoards ? "none" : "";
+    } else {
+      board.style.display = "";
+    }
 
-      if (user.length > 0 && settings.blockedUsers.includes(user)) {
-        board.style.display = settings.hideBlockedBoards ? "none" : "";
-      } else {
-        board.style.display = "";
+    // Skip hidden boards from alternating pattern
+    if (board.style.display === "none") return;
+
+    // Apply colors in priority order
+    if (
+      settings.followedUsers.includes(user) &&
+      settings.highlightFollowedBoards
+    ) {
+      board.style.backgroundColor = settings.followedUnderlineColors;
+    } else if (
+      settings.blockedUsers.includes(user) &&
+      settings.highlightBlockedBoards &&
+      !settings.hideBlockedBoards
+    ) {
+      board.style.backgroundColor = settings.blockedUnderlineColors;
+    } else {
+      // Check for native colors before applying alternating pattern
+      const computedStyle = window.getComputedStyle(board);
+      const currentBgColor = computedStyle.backgroundColor;
+      
+      const isNativeColor = 
+        currentBgColor === "rgb(211, 239, 255)" || 
+        currentBgColor === "rgb(207, 255, 208)" ||
+        currentBgColor === "rgba(211, 239, 255, 1)" ||
+        currentBgColor === "rgba(207, 255, 208, 1)";
+      
+      if (!isNativeColor) {
+        board.style.backgroundColor = visibleIndex % 2 === 0 ? "#fff" : "#f3f3f3";
       }
-    });
-    fixBoardListAlternatingPattern();
-  }
+    }
+    
+    visibleIndex++;
+  });
+}
 
   function createFollowBlockControls() {
     const posts = document.querySelectorAll("#boardTopic li");
@@ -678,7 +696,6 @@
       renderUserList();
       highlightFollowedUsers();
       createFollowBlockControls();
-      if (type === "blocked") fixBoardListAlternatingPattern();
       noticePopup(
         `Deleted ${selected.length} ${userWord(
           selected.length
