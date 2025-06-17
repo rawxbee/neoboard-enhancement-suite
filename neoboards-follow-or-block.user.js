@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neoboards: Follow or Block
 // @description  Follow (highlights messages and threads) and block users (hides messages and boards).
-// @version      2.0.1
+// @version      2.0.2
 // @author       sunbathr & rawbeee
 // @match        *://www.neopets.com/neoboards/*
 // @grant        GM_setValue
@@ -82,7 +82,6 @@
   }
 
   const cssText = `
-        .postAuthorPetIcon img { border: 0px !important; border-radius: 3px; }
         div.boardPostByline { position: relative; }
         div.boardPost { position: relative; }
         div.postPetInfo { margin-bottom: 10px; }
@@ -289,10 +288,8 @@
     if (!authorElem) return;
     var user = normalizeUsername(authorElem.textContent);
     
-    // Skip hidden boards from alternating pattern
     if (board.style.display === "none") return;
 
-    // Apply colors in priority order
     if (
       settings.followedUsers.includes(user) &&
       settings.highlightFollowedBoards
@@ -305,7 +302,6 @@
     ) {
       board.style.backgroundColor = settings.blockedUnderlineColors;
     } else {
-      // Check for native colors before applying alternating pattern
       const computedStyle = window.getComputedStyle(board);
       const currentBgColor = computedStyle.backgroundColor;
       
@@ -316,7 +312,7 @@
         currentBgColor === "rgba(207, 255, 208, 1)";
       
       if (!isNativeColor) {
-        board.style.backgroundColor = visibleIndex % 2 === 0 ? "#fff" : "#f3f3f3";
+        board.style.backgroundColor = visibleIndex % 2 === 0 ? "#f3f3f3" : "#ffffff";
       }
     }
     
@@ -334,17 +330,14 @@
     if (!authorElem) return;
     var user = normalizeUsername(authorElem.textContent);
 
-    // Handle blocking/hiding first
     if (user.length > 0 && settings.blockedUsers.includes(user)) {
       board.style.display = settings.hideBlockedBoards ? "none" : "";
     } else {
       board.style.display = "";
     }
 
-    // Skip hidden boards from alternating pattern
     if (board.style.display === "none") return;
 
-    // Apply colors in priority order
     if (
       settings.followedUsers.includes(user) &&
       settings.highlightFollowedBoards
@@ -357,7 +350,6 @@
     ) {
       board.style.backgroundColor = settings.blockedUnderlineColors;
     } else {
-      // Check for native colors before applying alternating pattern
       const computedStyle = window.getComputedStyle(board);
       const currentBgColor = computedStyle.backgroundColor;
       
@@ -368,7 +360,7 @@
         currentBgColor === "rgba(207, 255, 208, 1)";
       
       if (!isNativeColor) {
-        board.style.backgroundColor = visibleIndex % 2 === 0 ? "#fff" : "#f3f3f3";
+        board.style.backgroundColor = visibleIndex % 2 === 0 ? "#f3f3f3" : "#ffffff";
       }
     }
     
