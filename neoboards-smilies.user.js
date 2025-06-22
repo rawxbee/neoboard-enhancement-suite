@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neoboards: Smilies
-// @version      2.0.0
+// @version      2.0.1
 // @description  Adds the entire smilie library to the neoboards. Embeds image links as images within replies (you can post images.neopets, pets.neopets and upload.neopets, etc).
 // @author       sunbathr & rawbeee
 // @match        *://www.neopets.com/neoboards/topic*
@@ -441,7 +441,7 @@ ${smilies
     }
     return `<a href="#" class="smiley" data-code="${smiley.code}"><img src="${
       smiley.img
-    }" alt="" border="0"${styleAttr ? ` style="${styleAttr}"` : ""}></a>`;
+    }" alt="${smiley.title ?? smiley.code}" title="${smiley.title ?? smiley.code}" border="0"${styleAttr ? ` style="${styleAttr}"` : ""}></a>`;
   })
   .join("\n")}
         </div>
@@ -665,7 +665,7 @@ ${smilies
           { code: "*eekeek*", img: smiliesPath + "eekeek.gif" },
           { code: "*fence*", img: smiliesPath + "fence.gif" },
           { code: "*festivalnegg*", img: smiliesPath + "festivalnegg.gif" },
-          { code: "*firecrackers*", img: smiliesPath + "firecrackers.gif" },
+          { code: "*firecrackers*", img: smiliesPath + "firecrackers.gif", title: "*firecrackers* is unusable due to the filters :(" },
           { code: "*fishnegg*", img: smiliesPath + "fishnegg.gif" },
           { code: "*flower*", img: smiliesPath + "flower.gif" },
           { code: "*gballoon*", img: smiliesPath + "gballoon.gif" },
@@ -785,41 +785,13 @@ ${smilies
         img: themesPath + "v3/profile-icon.svg",
         dropdownClass: "subnav-user",
         smilies: [
-          {
-            code:
-              "https://neopets.com/neomessages.phtml?type=send&recipient=" +
-              appInsightsUserName,
-            img: themesPath + "/v3/neomail-icon.svg",
-            style: "height: 20px;",
-          },
-          {
-            code:
-              "https://neopets.com/island/tradingpost.phtml?type=browse&criteria=owner&search_string=" +
-              appInsightsUserName,
-            img: themesPath + "tradingpost-icon.png",
-            style: "height: 20px;",
-          },
-          {
-            code:
-              "https://neopets.com/genie.phtml?type=find_user&auction_username=" +
-              appInsightsUserName,
-            img: themesPath + "auction-icon.png",
-            style: "height: 20px;",
-          },
-          {
-            code:
-              "https://neopets.com/browseshop.phtml?owner=" +
-              appInsightsUserName,
-            img: themesPath + "myshop-icon.png",
-            style: "height: 20px;",
-          },
-          {
-            code:
-              "https://neopets.com/gallery/index.phtml?gu=" +
-              appInsightsUserName,
-            img: themesPath + "v3/gallery-icon.svg",
-            style: "height: 20px;",
-          },
+          {code: "https://neopets.com/neomessages.phtml?type=send&recipient=" + appInsightsUserName, img: themesPath + "/v3/neomail-icon.svg", style: "height: 20px;"},
+          {code: "https://neopets.com/island/tradingpost.phtml?type=browse&criteria=owner&search_string=" + appInsightsUserName, img: themesPath + "tradingpost-icon.png", style: "height: 20px;"},
+          {code: "https://neopets.com/genie.phtml?type=find_user&auction_username=" + appInsightsUserName, img: themesPath + "auction-icon.png", style: "height: 20px;"},
+          {code:"https://neopets.com/browseshop.phtml?owner=" + appInsightsUserName, img: themesPath + "myshop-icon.png", style: "height: 20px;"},
+          {code: "https://neopets.com/gallery/index.phtml?gu=" + appInsightsUserName, img: themesPath + "v3/gallery-icon.svg", style: "height: 20px;"},
+          {code:`
+‎`, img: themesPath + "plus-circle.svg", style: "height: 20px;", title: "This is a newline + an empty character that can be used after links to avoid breaking fonts :)"},
         ],
       },
     ];
